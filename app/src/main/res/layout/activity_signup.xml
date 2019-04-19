@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context=".Signup">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-condensed-light"
+            android:text="SIGN UP"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:typeface="serif" />
+
+    <EditText
+        android:id="@+id/editText_signupfullname"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true"
+        android:inputType="textPersonName"
+        android:background="@drawable/roundedcorner"
+        android:paddingLeft="10dp"
+        android:hint="Full Name" />
+
+    <EditText
+        android:id="@+id/editText_signupicno"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:layout_below="@id/editText_signupfullname"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:inputType="number"
+        android:background="@drawable/roundedcorner"
+        android:paddingLeft="10dp"
+        android:hint="Identification Number" />
+
+    <EditText
+        android:id="@+id/editText_signupaddress"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:layout_below="@id/editText_signupicno"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:inputType="textPostalAddress"
+        android:background="@drawable/roundedcorner"
+        android:paddingLeft="10dp"
+        android:hint="Home Address" />
+
+    <EditText
+        android:id="@+id/editText_signupemail"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:layout_below="@id/editText_signupaddress"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/roundedcorner"
+        android:paddingLeft="10dp"
+        android:hint="Email Address" />
+
+    <EditText
+        android:id="@+id/editText_signupphoneno"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:layout_below="@id/editText_signupemail"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:inputType="phone"
+        android:background="@drawable/roundedcorner"
+        android:paddingLeft="10dp"
+        android:hint="Phone Number" />
+
+    <EditText
+        android:id="@+id/editText_signuppassword"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:layout_below="@id/editText_signupphoneno"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:inputType="textPassword"
+        android:background="@drawable/roundedcorner"
+        android:paddingLeft="10dp"
+        android:hint="Password" />
+
+    <EditText
+        android:id="@+id/editText_signupconfirmpassword"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:layout_below="@id/editText_signuppassword"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:inputType="textPassword"
+        android:background="@drawable/roundedcorner"
+        android:paddingLeft="10dp"
+        android:hint="Confirm Password" />
+
+    <Button
+        android:id="@+id/button_signup"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/editText_signupconfirmpassword"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:width="200dp"
+        android:height="40dp"
+        android:background="@drawable/roundedcorner"
+        android:text="SAVE" />
+
+    </RelativeLayout>
+</ScrollView>

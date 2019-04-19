@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context=".CreateAppointment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-condensed-light"
+            android:text="APPOINTMENT"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:typeface="serif" />
+
+        <EditText
+            android:id="@+id/editText_patientname"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:layout_marginTop="70dp"
+            android:layout_centerHorizontal="true"
+            android:inputType="textPersonName"
+            android:background="@drawable/roundedcorner"
+            android:paddingLeft="10dp"
+            android:hint="Patient Name" />
+
+        <EditText
+            android:id="@+id/editText_appointmentdate"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:layout_below="@id/editText_patientname"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/roundedcorner"
+            android:paddingLeft="10dp"
+            android:hint="Appointment Date" />
+
+        <EditText
+            android:id="@+id/editText_appointmenttime"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:layout_below="@id/editText_appointmentdate"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:inputType="phone"
+            android:background="@drawable/roundedcorner"
+            android:paddingLeft="10dp"
+            android:hint="Appointment Time" />
+
+        <Button
+            android:id="@+id/button_addappointment"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/editText_appointmenttime"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:width="200dp"
+            android:height="40dp"
+            android:background="@drawable/roundedcorner"
+            android:text="SAVE" />
+
+    </RelativeLayout>
+</ScrollView>
