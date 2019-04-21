@@ -30,7 +30,7 @@ public class CreateAppointment extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_appointment);
+        setContentView(R.layout.activity_createappointment);
 
         editText_patientname = (EditText) findViewById(R.id.editText_patientname);
         editText_appointmentdate = (EditText) findViewById(R.id.editText_appointmentdate);
