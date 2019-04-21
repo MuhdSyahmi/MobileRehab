@@ -1,8 +1,7 @@
 package com.example.mobilerehab;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
+import android.support.v7.app.AppCompatActivity;
 
 public class QrGenerate extends AppCompatActivity {
 

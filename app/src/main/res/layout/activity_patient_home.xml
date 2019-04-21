@@ -41,7 +41,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.142"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="8dp"/>
+            tools:layout_editor_absoluteY="8dp"
+            app:layout_column="1"
+            app:layout_row="0" />
 
         <Button
             android:id="@+id/button_patientviewlocation"
@@ -57,6 +59,22 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="8dp"
             app:layout_column="0"
+            app:layout_row="0" />
+
+        <Button
+            android:id="@+id/button_patientscanqr"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/roundedcorner"
+            android:text="Scan QR"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.142"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="8dp"
+            app:layout_column="1"
             app:layout_row="0" />
 
     </android.support.v7.widget.GridLayout>
