@@ -8,15 +8,15 @@ import android.widget.Button;
 
 public class DoctorHome extends AppCompatActivity {
 
-    Button button, button2, button3;
+    Button button_addpatient, button_addappointment, button_viewappointment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_home);
 
-        button = (Button)findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        button_addpatient = findViewById(R.id.button_addpatient);
+        button_addpatient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),Signup.class);
@@ -24,8 +24,8 @@ public class DoctorHome extends AppCompatActivity {
             }
         });
 
-        button2 = (Button)findViewById(R.id.button2);
-        button2.setOnClickListener(new View.OnClickListener() {
+        button_addappointment = findViewById(R.id.button_addappointment);
+        button_addappointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(getApplicationContext(), CreateAppointment.class);
@@ -33,8 +33,8 @@ public class DoctorHome extends AppCompatActivity {
             }
         });
 
-        button3 = (Button)findViewById(R.id.button3);
-        button3.setOnClickListener(new View.OnClickListener() {
+        button_viewappointment = findViewById(R.id.button_viewappointment);
+        button_viewappointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent2 = new Intent(getApplicationContext(),Schedule.class);

@@ -8,8 +8,9 @@ public class SharedPref {
 
     public static final String SHARED_PREF_NAME = "mobilerehab";
 
-    //Username
     public static final String EMAIL_ADDRESS = "email_address";
+
+    public static final String USER_ID = "user_id";
 
     public static SharedPref mInstance;
 
@@ -28,7 +29,6 @@ public class SharedPref {
         return mInstance;
     }
 
-    //method to store user data
     public void storeUserName(String email) {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -36,22 +36,25 @@ public class SharedPref {
         editor.commit();
     }
 
-    //check if user is logged in
+    public void storeUserId(String userid) {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(USER_ID, userid);
+        editor.commit();
+    }
+
     public boolean isLoggedIn() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(EMAIL_ADDRESS, null) != null;
     }
 
 
-    //find logged in user
     public String LoggedInUser() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(EMAIL_ADDRESS, null);
 
     }
 
-
-    //Logout user
     public void logout() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

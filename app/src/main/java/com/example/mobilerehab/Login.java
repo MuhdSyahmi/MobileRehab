@@ -27,11 +27,10 @@ import java.util.Map;
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
     EditText editText_loginusername, editText_loginpassword;
-    TextView textView_roles;
+    final String loginURL = "http://192.168.1.31/MobileRehab/login.php";
     Button button_login;
     Vibrator v;
-
-    final String loginURL = "http://192.168.1.13/MobileRehab/login.php";
+    TextView textView_roles, textView_userid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +39,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         editText_loginusername = findViewById(R.id.editText_loginusername);
         editText_loginpassword = findViewById(R.id.editText_loginpassword);
         textView_roles = findViewById(R.id.textView_roles);
+        textView_userid = findViewById(R.id.textView_userid);
         button_login = findViewById(R.id.button_login);
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
@@ -87,6 +87,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         final String email_address = editText_loginusername.getText().toString();
         final String password = editText_loginpassword.getText().toString();
         final String roles = textView_roles.getText().toString();
+        final String user_id = textView_userid.getText().toString();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,loginURL,
                 new Response.Listener<String>() {
@@ -94,7 +95,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     public void onResponse(String response) {
 
                         try {
-                            Toast.makeText(getApplicationContext(),response.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
 
                             JSONObject obj = new JSONObject(response);
                             if (obj.getBoolean("error")) {
@@ -103,9 +104,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
                                 String Username = obj.getString("email_address");
                                 Toast.makeText(getApplicationContext(),Username, Toast.LENGTH_SHORT).show();
-
                                 SharedPref.getInstance(getApplicationContext()).storeUserName(Username);
 
+                                String UserID = obj.getString("user_id");
+                                SharedPref.getInstance(getApplicationContext()).storeUserId(UserID);
                                 finish();
 
                                 String roles = obj.getString("roles");
@@ -117,6 +119,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                 {
                                     startActivity(new Intent(getApplicationContext(), PatientHome.class));
                                 }
+
                             }
 
                         } catch (JSONException e) {
@@ -134,11 +137,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+
+                params.put("user_id", user_id);
                 params.put("email_address", email_address);
                 params.put("password", password);
                 params.put("roles", roles);
 
                 return params;
+
             }
         };
         VolleySingleton.getInstance(Login.this).addToRequestQueue(stringRequest);

@@ -73,7 +73,15 @@
             android:hint="@string/days_away_from_drugs"
             android:clickable="true"
             android:inputType="date"
+            android:datePickerMode="calendar"
             android:focusable="true" />
+
+        <TextView
+            android:id="@+id/textView_userid"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/editText_patientstartdate"
+            android:layout_centerHorizontal="true" />
 
         <Button
             android:id="@+id/button_patientsave"
@@ -82,7 +90,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:background="@drawable/roundedcorner"
-            android:layout_below="@id/editText_patientstartdate"
+            android:layout_below="@id/textView_userid"
             android:text="@string/save"/>
     </RelativeLayout>
 

@@ -10,21 +10,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class DataParser {
+class DataParser {
 
-    public List<HashMap<String, String>> parse(String jsonData) {
+    List<HashMap<String, String>> parse(String jsonData) {
         JSONArray jsonArray = null;
         JSONObject jsonObject;
 
         try {
             Log.d("Places", "parse");
-            jsonObject = new JSONObject((String) jsonData);
+            jsonObject = new JSONObject(jsonData);
             jsonArray = jsonObject.getJSONArray("results");
         } catch (JSONException e) {
             Log.d("Places", "parse error");
             e.printStackTrace();
         }
-        return getPlaces(jsonArray);
+        if (jsonArray != null) {
+            return getPlaces(jsonArray);
+        }
+        return null;
     }
 
     private java.util.List<HashMap<String, String>> getPlaces(JSONArray jsonArray) {

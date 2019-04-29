@@ -22,20 +22,19 @@ import java.util.Map;
 
 public class CreateAppointment extends AppCompatActivity {
 
+    final String appointmentUrl = "http://192.168.1.13/MobileRehab/appointment.php";
     EditText editText_patientname, editText_appointmentdate, editText_appointmenttime;
     Button button_addappointment;
-
-    final String appointmentUrl = "http://192.168.1.13/MobileRehab/appointment.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_createappointment);
 
-        editText_patientname = (EditText) findViewById(R.id.editText_patientname);
-        editText_appointmentdate = (EditText) findViewById(R.id.editText_appointmentdate);
-        editText_appointmenttime = (EditText) findViewById(R.id.editText_appointmenttime);
-        button_addappointment = (Button) findViewById(R.id.button_addappointment);
+        editText_patientname = findViewById(R.id.editText_patientname);
+        editText_appointmentdate = findViewById(R.id.editText_appointmentdate);
+        editText_appointmenttime = findViewById(R.id.editText_appointmenttime);
+        button_addappointment = findViewById(R.id.button_addappointment);
 
         button_addappointment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +54,7 @@ public class CreateAppointment extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                             JSONObject obj = new JSONObject(response);
                             if (obj.getBoolean("error")) {
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
