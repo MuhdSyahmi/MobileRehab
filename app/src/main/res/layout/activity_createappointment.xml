@@ -43,9 +43,9 @@
             android:layout_below="@id/editText_patientname"
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
-            android:inputType="textEmailAddress"
             android:background="@drawable/roundedcorner"
             android:paddingLeft="10dp"
+            android:inputType="date"
             android:hint="Appointment Date" />
 
         <EditText
@@ -56,7 +56,7 @@
             android:layout_below="@id/editText_appointmentdate"
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
-            android:inputType="phone"
+            android:inputType="time"
             android:background="@drawable/roundedcorner"
             android:paddingLeft="10dp"
             android:hint="Appointment Time" />
@@ -72,6 +72,14 @@
             android:height="40dp"
             android:background="@drawable/roundedcorner"
             android:text="SAVE" />
+
+        <TextView
+            android:id="@+id/textView_userid"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/button_addappointment"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp" />
 
     </RelativeLayout>
 </ScrollView>

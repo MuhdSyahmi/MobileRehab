@@ -2,6 +2,7 @@ package com.example.mobilerehab;
 
 public class ScheduleData {
 
+    public int user_id;
     public int schedule_id;
     public String schedule_patientname;
     public String schedule_date;
@@ -11,11 +12,20 @@ public class ScheduleData {
 
     }
 
-    public ScheduleData(int schedule_id, String schedule_patientname, String schedule_date, String schedule_time){
+    public ScheduleData(int user_id, int schedule_id, String schedule_patientname, String schedule_date, String schedule_time) {
+        this.user_id = user_id;
         this.schedule_id = schedule_id;
         this.schedule_patientname = schedule_patientname;
         this.schedule_date = schedule_date;
         this.schedule_time = schedule_time;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public int getSchedule_id() {

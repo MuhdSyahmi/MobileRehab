@@ -9,6 +9,12 @@
     app:barrierAllowsGoneWidgets="false"
     tools:context=".PatientHome">
 
+    <TextView
+        android:id="@+id/textView_randomquotes"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
 
     <android.support.v7.widget.GridLayout
         android:layout_width="fill_parent"

@@ -27,7 +27,7 @@ import java.util.Map;
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
     EditText editText_loginusername, editText_loginpassword;
-    final String loginURL = "http://192.168.1.31/MobileRehab/login.php";
+    final String loginURL = "http://10.131.73.39/MobileRehab/login.php";
     Button button_login;
     Vibrator v;
     TextView textView_roles, textView_userid;
@@ -108,7 +108,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
                                 String UserID = obj.getString("user_id");
                                 SharedPref.getInstance(getApplicationContext()).storeUserId(UserID);
-                                finish();
 
                                 String roles = obj.getString("roles");
 

@@ -1,7 +1,9 @@
 package com.example.mobilerehab;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -22,6 +24,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.mobilerehab.SharedPref.SHARED_PREF_NAME;
+import static com.example.mobilerehab.SharedPref.mCtx;
+
 public class Schedule extends AppCompatActivity implements ScheduleAdapter.OnScheduleListener {
 
     public static final String extra_scheduleid = "appointment_id";
@@ -35,7 +40,9 @@ public class Schedule extends AppCompatActivity implements ScheduleAdapter.OnSch
     private List<ScheduleData> scheduleDataList;
     private RecyclerView.Adapter adapter;
 
-    final String ScheduleUrl = "http://192.168.1.13/MobileRehab/appointment.php?selectFn=viewappointment";
+    final String ScheduleUrl = "http://192.168.1.33/MobileRehab/appointment.php?selectFn=viewappointment&appointment_doctorid=" + appointment_doctorid;
+    SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+    final String appointment_doctorid = sharedPreferences.getString("user_id", "");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

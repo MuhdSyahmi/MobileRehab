@@ -29,20 +29,20 @@ public class Signup extends AppCompatActivity {
     Button button_signup;
     Vibrator v;
 
-    final String registerUrl = "http://192.168.1.13/MobileRehab/register.php";
+    final String registerUrl = "http://192.168.1.33/MobileRehab/register.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        editText_signupfullname = (EditText) findViewById(R.id.editText_signupfullname);
-        editText_signupicno = (EditText) findViewById(R.id.editText_signupicno);
-        editText_signupaddress = (EditText) findViewById(R.id.editText_signupaddress);
-        editText_signupemail = (EditText) findViewById(R.id.editText_signupemail);
-        editText_signupphoneno = (EditText) findViewById(R.id.editText_signupphoneno);
-        editText_signuppassword = (EditText) findViewById(R.id.editText_signuppassword);
-        button_signup = (Button) findViewById(R.id.button_signup);
+        editText_signupfullname = findViewById(R.id.editText_signupfullname);
+        editText_signupicno = findViewById(R.id.editText_signupicno);
+        editText_signupaddress = findViewById(R.id.editText_signupaddress);
+        editText_signupemail = findViewById(R.id.editText_signupemail);
+        editText_signupphoneno = findViewById(R.id.editText_signupphoneno);
+        editText_signuppassword = findViewById(R.id.editText_signuppassword);
+        button_signup = findViewById(R.id.button_signup);
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         button_signup.setOnClickListener(new View.OnClickListener() {
@@ -122,7 +122,7 @@ public class Signup extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            Toast.makeText(getApplicationContext(),response.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                             JSONObject obj = new JSONObject(response);
                             if (obj.getBoolean("error")) {
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();

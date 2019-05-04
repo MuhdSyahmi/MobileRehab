@@ -32,7 +32,7 @@ public class ScheduleInfo extends AppCompatActivity {
     private TextView textView_scheduleid, textView_patientname;
     private Button button_update, button_delete;
 
-    final String appointmentUrl = "http://192.168.1.13/MobileRehab/appointment.php";
+    final String appointmentUrl = "http://192.168.1.33/MobileRehab/appointment.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +46,12 @@ public class ScheduleInfo extends AppCompatActivity {
         String scheduledate = intent.getStringExtra(extra_scheduledate);
         String scheduletime = intent.getStringExtra(extra_scheduletime);
 
-        textView_scheduleid = (TextView) findViewById(R.id.textView_scheduleid);
-        textView_patientname = (TextView) findViewById(R.id.textView_patient_name);
-        textView_scheduledate = (EditText) findViewById(R.id.textView_scheduledate);
-        textView_scheduletime = (EditText) findViewById(R.id.textView_scheduletime);
+        textView_scheduleid = findViewById(R.id.textView_scheduleid);
+        textView_patientname = findViewById(R.id.textView_patient_name);
+        textView_scheduledate = findViewById(R.id.textView_scheduledate);
+        textView_scheduletime = findViewById(R.id.textView_scheduletime);
 
-        button_update = (Button) findViewById(R.id.button_updateschedule);
+        button_update = findViewById(R.id.button_updateschedule);
         button_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +59,7 @@ public class ScheduleInfo extends AppCompatActivity {
             }
         });
 
-        button_delete = (Button) findViewById(R.id.button_deleteschedule);
+        button_delete = findViewById(R.id.button_deleteschedule);
         button_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +84,7 @@ public class ScheduleInfo extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            Toast.makeText(getApplicationContext(),response.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                             JSONObject obj = new JSONObject(response);
                             if (obj.getBoolean("error")) {
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
@@ -133,7 +133,7 @@ public class ScheduleInfo extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            Toast.makeText(getApplicationContext(),response.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                             JSONObject obj = new JSONObject(response);
                             if (obj.getBoolean("error")) {
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
