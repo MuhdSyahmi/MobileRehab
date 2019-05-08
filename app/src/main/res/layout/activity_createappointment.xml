@@ -11,6 +11,7 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/textView_createappointment"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
@@ -18,22 +19,42 @@
             android:fontFamily="sans-serif-condensed-light"
             android:text="APPOINTMENT"
             android:textAlignment="center"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/common_google_signin_btn_text_light_default"
             android:textSize="36sp"
             android:textStyle="bold"
             android:typeface="serif" />
+
+        <Spinner
+            android:id="@+id/spinner_patientname"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/textView_createappointment"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"></Spinner>
+
+        <EditText
+            android:id="@+id/editText_patientid"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/spinner_patientname"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/roundedcorner"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp" />
 
         <EditText
             android:id="@+id/editText_patientname"
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:ems="10"
-            android:layout_marginTop="70dp"
+            android:layout_below="@id/editText_patientid"
+            android:layout_marginTop="30dp"
             android:layout_centerHorizontal="true"
             android:inputType="textPersonName"
             android:background="@drawable/roundedcorner"
-            android:paddingLeft="10dp"
-            android:hint="Patient Name" />
+            android:paddingLeft="10dp" />
 
         <EditText
             android:id="@+id/editText_appointmentdate"
@@ -41,7 +62,7 @@
             android:layout_height="40dp"
             android:ems="10"
             android:layout_below="@id/editText_patientname"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/roundedcorner"
             android:paddingLeft="10dp"
@@ -54,7 +75,7 @@
             android:layout_height="40dp"
             android:ems="10"
             android:layout_below="@id/editText_appointmentdate"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:layout_centerHorizontal="true"
             android:inputType="time"
             android:background="@drawable/roundedcorner"
@@ -66,7 +87,7 @@
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_below="@id/editText_appointmenttime"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:layout_centerHorizontal="true"
             android:width="200dp"
             android:height="40dp"

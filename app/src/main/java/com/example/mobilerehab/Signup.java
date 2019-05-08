@@ -25,7 +25,7 @@ import java.util.Map;
 
 public class Signup extends AppCompatActivity {
 
-    EditText editText_signupfullname, editText_signupicno, editText_signupaddress, editText_signupemail, editText_signupphoneno, editText_signuppassword;
+    EditText editText_signupemail, editText_signuppassword;
     Button button_signup;
     Vibrator v;
 
@@ -36,11 +36,7 @@ public class Signup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        editText_signupfullname = findViewById(R.id.editText_signupfullname);
-        editText_signupicno = findViewById(R.id.editText_signupicno);
-        editText_signupaddress = findViewById(R.id.editText_signupaddress);
         editText_signupemail = findViewById(R.id.editText_signupemail);
-        editText_signupphoneno = findViewById(R.id.editText_signupphoneno);
         editText_signuppassword = findViewById(R.id.editText_signuppassword);
         button_signup = findViewById(R.id.button_signup);
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -55,22 +51,9 @@ public class Signup extends AppCompatActivity {
 
     private void validateUserData() {
 
-        final String fullname = editText_signupfullname.getText().toString();
-        final String identification_no = editText_signupicno.getText().toString();
-        final String home_address = editText_signupaddress.getText().toString();
         final String email_address = editText_signupemail.getText().toString();
-        final String phone_number = editText_signupphoneno.getText().toString();
         final String password = editText_signuppassword.getText().toString();
 
-//        checking if username is empty
-        if (TextUtils.isEmpty(fullname)) {
-            editText_signupfullname.setError("Please enter username");
-            editText_signupfullname.requestFocus();
-            // Vibrate for 100 milliseconds
-            v.vibrate(100);
-            return;
-        }
-        //checking if email is empty
         if (TextUtils.isEmpty(email_address)) {
             editText_signupemail.setError("Please enter email");
             editText_signupemail.requestFocus();
@@ -78,7 +61,7 @@ public class Signup extends AppCompatActivity {
             v.vibrate(100);
             return;
         }
-        //checking if password is empty
+
         if (TextUtils.isEmpty(password)) {
             editText_signuppassword.setError("Please enter password");
             editText_signuppassword.requestFocus();
@@ -86,7 +69,7 @@ public class Signup extends AppCompatActivity {
             v.vibrate(100);
             return;
         }
-        //validating email
+
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email_address).matches()) {
             editText_signupemail.setError("Enter a valid email");
             editText_signupemail.requestFocus();
@@ -94,7 +77,7 @@ public class Signup extends AppCompatActivity {
             v.vibrate(100);
             return;
         }
-        //checking if password matches
+
 //        if (!reg_password.equals(reg_cpassword)) {
 //            password.setError("Password Does not Match");
 //            password.requestFocus();
@@ -103,18 +86,13 @@ public class Signup extends AppCompatActivity {
 //            return;
 //        }
 
-        //After Validating we register User
         registerUser();
 
     }
 
     private void registerUser() {
 
-        final String fullname = editText_signupfullname.getText().toString();
-        final String identification_no = editText_signupicno.getText().toString();
-        final String home_address = editText_signupaddress.getText().toString();
         final String email_address = editText_signupemail.getText().toString();
-        final String phone_number = editText_signupphoneno.getText().toString();
         final String password = editText_signuppassword.getText().toString();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,registerUrl,
@@ -148,11 +126,7 @@ public class Signup extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("selectFn","addpatient");
-                params.put("fullname",fullname);
-                params.put("identification_no",identification_no);
-                params.put("home_address",home_address);
                 params.put("email_address",email_address);
-                params.put("phone_number",phone_number);
                 params.put("password", password);
 
                 return params;

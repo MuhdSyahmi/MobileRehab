@@ -8,44 +8,61 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import static android.R.layout.simple_spinner_item;
 import static com.example.mobilerehab.SharedPref.SHARED_PREF_NAME;
 import static com.example.mobilerehab.SharedPref.mCtx;
 
 public class CreateAppointment extends AppCompatActivity {
 
     final String appointmentUrl = "http://192.168.1.33/MobileRehab/appointment.php";
-    EditText editText_patientname, editText_appointmentdate, editText_appointmenttime;
+    final String spinnerUrl = "http://192.168.1.33/MobileRehab/appointmentspinner.php";
+    SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+    final String appointment_doctorid = sharedPreferences.getString("user_id", "");
+    EditText editText_patientid, editText_patientname, editText_appointmentdate, editText_appointmenttime;
     Button button_addappointment;
     TextView textView_userid;
     DatePickerDialog datePickerDialog;
     TimePickerDialog timePickerDialog;
+    ArrayList<SpinnerData> spinnerDataArrayList = new ArrayList<>();
+    ArrayList<String> patient_name = new ArrayList<>();
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_createappointment);
 
+        editText_patientid = findViewById(R.id.editText_patientid);
         editText_patientname = findViewById(R.id.editText_patientname);
         editText_appointmentdate = findViewById(R.id.editText_appointmentdate);
         editText_appointmentdate.setInputType(InputType.TYPE_NULL);
@@ -56,7 +73,6 @@ public class CreateAppointment extends AppCompatActivity {
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
                 int month = calendar.get(Calendar.MONTH);
                 int year = calendar.get(Calendar.YEAR);
-                AppointmentClient.setAlarmForNotification(calendar);
 
                 datePickerDialog = new DatePickerDialog(CreateAppointment.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
@@ -100,6 +116,56 @@ public class CreateAppointment extends AppCompatActivity {
         String doctor_id = sharedPreferences.getString("user_id", "");
         textView_userid = findViewById(R.id.textView_userid);
         textView_userid.setText(doctor_id);
+
+        populateSpinner();
+        spinner = findViewById(R.id.spinner_patientname);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                editText_patientid.setText();
+                editText_patientname.setText();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+    }
+
+    private void populateSpinner() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(spinnerUrl, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        SpinnerData spinnerData = new SpinnerData();
+                        spinnerData.setPatient_id(jsonObject.getInt("user_id"));
+                        spinnerData.setPatient_name(jsonObject.getString("patient_name"));
+                        spinnerDataArrayList.add(spinnerData);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                for (int i = 0; i < spinnerDataArrayList.size(); i++) {
+                    patient_name.add(spinnerDataArrayList.get(i).getPatient_name());
+                }
+                ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(CreateAppointment.this, simple_spinner_item, patient_name);
+                spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner.setAdapter(spinnerArrayAdapter);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Volley", error.toString());
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
     }
 
     private void addAppointment() {
