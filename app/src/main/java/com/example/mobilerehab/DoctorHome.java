@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class DoctorHome extends AppCompatActivity {
 
-    Button button_addpatient, button_addappointment, button_viewappointment;
+    Button button_addpatient, button_addappointment, button_viewappointment, button_viewpatient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,16 @@ public class DoctorHome extends AppCompatActivity {
         button_addpatient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Signup.class);
+                Intent intent = new Intent(getApplicationContext(), AddPatient.class);
+                startActivity(intent);
+            }
+        });
+
+        button_viewpatient = findViewById(R.id.button_viewpatient);
+        button_viewpatient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), DoctorViewPatient.class);
                 startActivity(intent);
             }
         });
@@ -28,7 +37,7 @@ public class DoctorHome extends AppCompatActivity {
         button_addappointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(getApplicationContext(), CreateAppointment.class);
+                Intent intent1 = new Intent(getApplicationContext(), AddAppointment.class);
                 startActivity(intent1);
             }
         });

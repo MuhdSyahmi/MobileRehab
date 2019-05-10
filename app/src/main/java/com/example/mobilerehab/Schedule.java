@@ -42,7 +42,7 @@ public class Schedule extends AppCompatActivity implements ScheduleAdapter.OnSch
 
     SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
     final String appointment_doctorid = sharedPreferences.getString("user_id", "");
-    final String ScheduleUrl = "http://192.168.1.33/MobileRehab/appointment.php?selectFn=viewappointment&appointment_doctorid=" + appointment_doctorid;
+    final String ScheduleUrl = "http://10.131.73.39/MobileRehab/appointment.php?selectFn=viewappointment&appointment_doctorid=" + appointment_doctorid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

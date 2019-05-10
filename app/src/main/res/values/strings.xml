@@ -5,7 +5,7 @@
     <string name="add_user">Add User</string>
     <string name="add_appointment">Add Appointment</string>
     <string name="view_appointment">View Appointment</string>
-    <string name="fullname">Fullname</string>
+    <string name="full_name">Full Name</string>
     <string name="address">Address</string>
     <string name="phone_number">Phone Number</string>
     <string name="save">SAVE</string>
@@ -13,4 +13,11 @@
     <string name="identification_number">Identification Number</string>
     <string name="take_barcode_picture">Take Picture</string>
     <string name="scan_barcode">Scan Barcode</string>
+    <string name="view_profile">View Profile</string>
+    <string name="view_location">View Location</string>
+    <string name="scan_qr">Scan QR</string>
+    <string name="view_user">View User</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>

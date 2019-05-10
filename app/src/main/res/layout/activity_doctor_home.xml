@@ -7,64 +7,66 @@
     android:layout_gravity="top|center"
     android:layout_alignParentStart="true"
     android:layout_alignParentEnd="true"
-    app:layout_row="2"
-    app:layout_column="2"
     android:background="@drawable/gradient"
     android:scrollbars="none"
     app:barrierAllowsGoneWidgets="false"
     tools:context=".DoctorHome">
 
     <android.support.v7.widget.GridLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="40dp"
+        app:alignmentMode="alignBounds"
+        app:useDefaultMargins="true">
 
         <Button
             android:id="@+id/button_addpatient"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="39dp"
             android:background="@drawable/roundedcorner"
             android:text="@string/add_user"
+            android:gravity="center"
             android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.142"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="8dp" />
+            app:layout_column="0"
+            app:layout_row="0" />
 
         <Button
             android:id="@+id/button_addappointment"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="39dp"
+            android:layout_marginStart="10dp"
             android:background="@drawable/roundedcorner"
             android:text="@string/add_appointment"
+            android:gravity="center"
             android:textAlignment="center"
             app:layout_column="1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.142"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_row="0"
-            tools:layout_editor_absoluteY="8dp" />
+            app:layout_row="0" />
 
         <Button
             android:id="@+id/button_viewappointment"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="39dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/roundedcorner"
             android:text="@string/view_appointment"
+            android:gravity="center"
+            android:textAlignment="center"
+            app:layout_column="1"
+            app:layout_row="1" />
+
+        <Button
+            android:id="@+id/button_viewpatient"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/roundedcorner"
+            android:gravity="center"
+            android:text="@string/view_user"
             android:textAlignment="center"
             app:layout_column="0"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.142"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_row="1"
-            tools:layout_editor_absoluteY="8dp" />
+            app:layout_row="1" />
 
     </android.support.v7.widget.GridLayout>
 </RelativeLayout>

@@ -30,7 +30,7 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/roundedcorner"
             android:layout_below="@+id/textView_updateprofile"
-            android:hint="@string/fullname"/>
+            android:hint="@string/full_name" />
 
         <EditText
             android:id="@+id/editText_patienticnumber"

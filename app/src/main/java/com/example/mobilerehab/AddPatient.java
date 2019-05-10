@@ -23,21 +23,21 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Signup extends AppCompatActivity {
+public class AddPatient extends AppCompatActivity {
 
-    EditText editText_signupemail, editText_signuppassword;
+    final String addpatientUrl = "http://10.131.73.39/MobileRehab/addpatient.php";
     Button button_signup;
     Vibrator v;
-
-    final String registerUrl = "http://192.168.1.33/MobileRehab/register.php";
+    EditText editText_patientemail, editText_patientpassword, editText_patientconfirmpassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_addpatient);
 
-        editText_signupemail = findViewById(R.id.editText_signupemail);
-        editText_signuppassword = findViewById(R.id.editText_signuppassword);
+        editText_patientemail = findViewById(R.id.editText_patientemail);
+        editText_patientpassword = findViewById(R.id.editText_patientpassword);
+        editText_patientconfirmpassword = findViewById(R.id.editText_patientconfirmpassword);
         button_signup = findViewById(R.id.button_signup);
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
@@ -51,40 +51,36 @@ public class Signup extends AppCompatActivity {
 
     private void validateUserData() {
 
-        final String email_address = editText_signupemail.getText().toString();
-        final String password = editText_signuppassword.getText().toString();
+        final String email_address = editText_patientemail.getText().toString();
+        final String password = editText_patientpassword.getText().toString();
 
         if (TextUtils.isEmpty(email_address)) {
-            editText_signupemail.setError("Please enter email");
-            editText_signupemail.requestFocus();
-            // Vibrate for 100 milliseconds
+            editText_patientemail.setError("Please enter email");
+            editText_patientemail.requestFocus();
             v.vibrate(100);
             return;
         }
 
         if (TextUtils.isEmpty(password)) {
-            editText_signuppassword.setError("Please enter password");
-            editText_signuppassword.requestFocus();
-            //Vibrate for 100 milliseconds
+            editText_patientpassword.setError("Please enter password");
+            editText_patientpassword.requestFocus();
             v.vibrate(100);
             return;
         }
 
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email_address).matches()) {
-            editText_signupemail.setError("Enter a valid email");
-            editText_signupemail.requestFocus();
-            //Vibrate for 100 milliseconds
+            editText_patientemail.setError("Enter a valid email");
+            editText_patientemail.requestFocus();
             v.vibrate(100);
             return;
         }
 
-//        if (!reg_password.equals(reg_cpassword)) {
-//            password.setError("Password Does not Match");
-//            password.requestFocus();
-//            //Vibrate for 100 milliseconds
-//            v.vibrate(100);
-//            return;
-//        }
+        if (!editText_patientpassword.equals(editText_patientconfirmpassword)) {
+            editText_patientconfirmpassword.setError("Password Does not Match");
+            editText_patientconfirmpassword.requestFocus();
+            v.vibrate(100);
+            return;
+        }
 
         registerUser();
 
@@ -92,10 +88,10 @@ public class Signup extends AppCompatActivity {
 
     private void registerUser() {
 
-        final String email_address = editText_signupemail.getText().toString();
-        final String password = editText_signuppassword.getText().toString();
+        final String email_address = editText_patientemail.getText().toString();
+        final String password = editText_patientpassword.getText().toString();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,registerUrl,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, addpatientUrl,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -125,14 +121,13 @@ public class Signup extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("selectFn","addpatient");
                 params.put("email_address",email_address);
                 params.put("password", password);
 
                 return params;
             }
         };
-        VolleySingleton.getInstance(Signup.this).addToRequestQueue(stringRequest);
+        VolleySingleton.getInstance(AddPatient.this).addToRequestQueue(stringRequest);
     }
 
 }

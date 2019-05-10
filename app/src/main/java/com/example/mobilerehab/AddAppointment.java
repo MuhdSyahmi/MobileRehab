@@ -42,12 +42,13 @@ import static android.R.layout.simple_spinner_item;
 import static com.example.mobilerehab.SharedPref.SHARED_PREF_NAME;
 import static com.example.mobilerehab.SharedPref.mCtx;
 
-public class CreateAppointment extends AppCompatActivity {
+public class AddAppointment extends AppCompatActivity {
 
-    final String appointmentUrl = "http://192.168.1.33/MobileRehab/appointment.php";
-    final String spinnerUrl = "http://192.168.1.33/MobileRehab/appointmentspinner.php";
+    final String appointmentUrl = "http://10.131.73.39/MobileRehab/appointment.php";
     SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
     final String appointment_doctorid = sharedPreferences.getString("user_id", "");
+    final String spinnerUrl = "http://10.131.73.39/MobileRehab/appointmentspinner.php?appointment_doctorid=" + appointment_doctorid;
+
     EditText editText_patientid, editText_patientname, editText_appointmentdate, editText_appointmenttime;
     Button button_addappointment;
     TextView textView_userid;
@@ -60,7 +61,9 @@ public class CreateAppointment extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_createappointment);
+        setContentView(R.layout.activity_addappointment);
+
+        Toast.makeText(getApplicationContext(), appointment_doctorid, Toast.LENGTH_SHORT).show();
 
         editText_patientid = findViewById(R.id.editText_patientid);
         editText_patientname = findViewById(R.id.editText_patientname);
@@ -74,7 +77,7 @@ public class CreateAppointment extends AppCompatActivity {
                 int month = calendar.get(Calendar.MONTH);
                 int year = calendar.get(Calendar.YEAR);
 
-                datePickerDialog = new DatePickerDialog(CreateAppointment.this, new DatePickerDialog.OnDateSetListener() {
+                datePickerDialog = new DatePickerDialog(AddAppointment.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         editText_appointmentdate.setText(year + "/" + (month + 1) + "/" + dayOfMonth);
@@ -91,7 +94,7 @@ public class CreateAppointment extends AppCompatActivity {
                 Calendar calendar = Calendar.getInstance();
                 int hour = calendar.get(Calendar.HOUR_OF_DAY);
                 int minute = calendar.get(Calendar.MINUTE);
-                timePickerDialog = new TimePickerDialog(CreateAppointment.this, new TimePickerDialog.OnTimeSetListener() {
+                timePickerDialog = new TimePickerDialog(AddAppointment.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                         editText_appointmenttime.setText(selectedHour + ":" + selectedMinute);
@@ -119,20 +122,22 @@ public class CreateAppointment extends AppCompatActivity {
 
         populateSpinner();
         spinner = findViewById(R.id.spinner_patientname);
+        patient_name = new ArrayList<String>();
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                editText_patientid.setText();
-                editText_patientname.setText();
+                SpinnerData spinnerData = spinnerDataArrayList.get(position);
+                editText_patientid.setText(Integer.toString(spinnerData.getPatient_id()));
+                editText_patientname.setText(spinnerData.getPatient_name());
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                editText_patientid.setText("");
+                editText_patientname.setText("");
             }
         });
-
     }
 
     private void populateSpinner() {
@@ -143,7 +148,7 @@ public class CreateAppointment extends AppCompatActivity {
                     try {
                         JSONObject jsonObject = response.getJSONObject(i);
                         SpinnerData spinnerData = new SpinnerData();
-                        spinnerData.setPatient_id(jsonObject.getInt("user_id"));
+                        spinnerData.setPatient_id(jsonObject.getInt("patient_id"));
                         spinnerData.setPatient_name(jsonObject.getString("patient_name"));
                         spinnerDataArrayList.add(spinnerData);
 
@@ -154,7 +159,7 @@ public class CreateAppointment extends AppCompatActivity {
                 for (int i = 0; i < spinnerDataArrayList.size(); i++) {
                     patient_name.add(spinnerDataArrayList.get(i).getPatient_name());
                 }
-                ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(CreateAppointment.this, simple_spinner_item, patient_name);
+                ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(AddAppointment.this, simple_spinner_item, patient_name);
                 spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(spinnerArrayAdapter);
             }
@@ -171,7 +176,7 @@ public class CreateAppointment extends AppCompatActivity {
     private void addAppointment() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         final String appointment_doctorid = sharedPreferences.getString("user_id", "");
-        final String appointment_patientname = editText_patientname.getText().toString();
+        final String appointment_patientid = editText_patientid.getText().toString();
         final String appointment_date = editText_appointmentdate.getText().toString();
         final String appointment_time = editText_appointmenttime.getText().toString();
 
@@ -186,7 +191,7 @@ public class CreateAppointment extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                             } else {
 
-                                startActivity(new Intent(getApplicationContext(), CreateAppointment.class));
+                                startActivity(new Intent(getApplicationContext(), AddAppointment.class));
 
                             }
 
@@ -208,14 +213,14 @@ public class CreateAppointment extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("selectFn", "addappointment");
                 params.put("appointment_doctorid", appointment_doctorid);
-                params.put("appointment_patientname", appointment_patientname);
+                params.put("appointment_patientid", appointment_patientid);
                 params.put("appointment_date", appointment_date);
                 params.put("appointment_time", appointment_time);
 
                 return params;
             }
         };
-        VolleySingleton.getInstance(CreateAppointment.this).addToRequestQueue(stringRequest);
+        VolleySingleton.getInstance(AddAppointment.this).addToRequestQueue(stringRequest);
     }
 }
 
