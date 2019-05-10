@@ -14,6 +14,8 @@ public class SharedPref {
 
     public static final String DOCTOR_NAME = "doctor_name";
 
+    public static final String CREATED_BY = "createdby";
+
     public static SharedPref mInstance;
 
     public static Context mCtx;
@@ -42,6 +44,13 @@ public class SharedPref {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(USER_ID, userid);
+        editor.commit();
+    }
+
+    public void storeCreatedBy(String createdby) {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(CREATED_BY, createdby);
         editor.commit();
     }
 

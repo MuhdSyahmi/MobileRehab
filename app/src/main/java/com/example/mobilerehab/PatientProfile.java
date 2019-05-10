@@ -32,7 +32,7 @@ import static com.example.mobilerehab.SharedPref.mCtx;
 
 public class PatientProfile extends AppCompatActivity {
 
-    final String updateUrl = "http://192.168.1.33/MobileRehab/patient.php";
+    final String updateUrl = "http://10.131.73.39/MobileRehab/patient.php";
     final Calendar calendar = Calendar.getInstance();
     EditText editText_patientname, editText_patienticnumber, editText_patientaddress, editText_patientphonenumber, editText_patientstartdate;
     TextView textView_user_id;
@@ -82,6 +82,7 @@ public class PatientProfile extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         final String user_id = sharedPreferences.getString("user_id", "");
+        final String doctor_id = sharedPreferences.getString("createdby", "");
         final String patient_name = editText_patientname.getText().toString();
         final String patient_icnumber = editText_patienticnumber.getText().toString();
         final String patient_address = editText_patientaddress.getText().toString();
@@ -126,6 +127,7 @@ public class PatientProfile extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
 
                 params.put("user_id", user_id);
+                params.put("doctor_id", doctor_id);
                 params.put("patient_name", patient_name);
                 params.put("patient_icnumber", patient_icnumber);
                 params.put("patient_address", patient_address);

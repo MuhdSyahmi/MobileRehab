@@ -2,6 +2,7 @@ package com.example.mobilerehab;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,9 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.example.mobilerehab.SharedPref.SHARED_PREF_NAME;
+import static com.example.mobilerehab.SharedPref.mCtx;
 
 public class AddPatient extends AppCompatActivity {
 
@@ -75,12 +79,12 @@ public class AddPatient extends AppCompatActivity {
             return;
         }
 
-        if (!editText_patientpassword.equals(editText_patientconfirmpassword)) {
-            editText_patientconfirmpassword.setError("Password Does not Match");
-            editText_patientconfirmpassword.requestFocus();
-            v.vibrate(100);
-            return;
-        }
+//        if (!editText_patientpassword.equals(editText_patientconfirmpassword)) {
+//            editText_patientconfirmpassword.setError("Password Does not Match");
+//            editText_patientconfirmpassword.requestFocus();
+//            v.vibrate(100);
+//            return;
+//        }
 
         registerUser();
 
@@ -90,6 +94,8 @@ public class AddPatient extends AppCompatActivity {
 
         final String email_address = editText_patientemail.getText().toString();
         final String password = editText_patientpassword.getText().toString();
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        final String createdby = sharedPreferences.getString("user_id", "");
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, addpatientUrl,
                 new Response.Listener<String>() {
@@ -123,6 +129,7 @@ public class AddPatient extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("email_address",email_address);
                 params.put("password", password);
+                params.put("createdby", createdby);
 
                 return params;
             }

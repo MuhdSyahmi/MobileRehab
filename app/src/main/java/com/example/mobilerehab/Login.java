@@ -30,7 +30,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     final String loginURL = "http://10.131.73.39/MobileRehab/login.php";
     Button button_login;
     Vibrator v;
-    TextView textView_roles, textView_userid;
+    TextView textView_roles, textView_userid, textView_createdby;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         editText_loginpassword = findViewById(R.id.editText_loginpassword);
         textView_roles = findViewById(R.id.textView_roles);
         textView_userid = findViewById(R.id.textView_userid);
+        textView_createdby = findViewById(R.id.textView_createdby);
         button_login = findViewById(R.id.button_login);
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
@@ -88,6 +89,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         final String password = editText_loginpassword.getText().toString();
         final String roles = textView_roles.getText().toString();
         final String user_id = textView_userid.getText().toString();
+        final String created_by = textView_createdby.getText().toString();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,loginURL,
                 new Response.Listener<String>() {
@@ -97,19 +99,22 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         try {
                             Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
 
-                            JSONObject obj = new JSONObject(response);
-                            if (obj.getBoolean("error")) {
-                                Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                            JSONObject jsonObject = new JSONObject(response);
+                            if (jsonObject.getBoolean("error")) {
+                                Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                             } else {
 
-                                String Username = obj.getString("email_address");
+                                String Username = jsonObject.getString("email_address");
                                 Toast.makeText(getApplicationContext(),Username, Toast.LENGTH_SHORT).show();
                                 SharedPref.getInstance(getApplicationContext()).storeUserName(Username);
 
-                                String UserID = obj.getString("user_id");
+                                String CreatedBy = jsonObject.getString("createdby");
+                                SharedPref.getInstance(getApplicationContext()).storeCreatedBy(CreatedBy);
+
+                                String UserID = jsonObject.getString("user_id");
                                 SharedPref.getInstance(getApplicationContext()).storeUserId(UserID);
 
-                                String roles = obj.getString("roles");
+                                String roles = jsonObject.getString("roles");
 
                                 if(roles.equals("Doctor"))
                                 {
@@ -141,6 +146,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 params.put("email_address", email_address);
                 params.put("password", password);
                 params.put("roles", roles);
+                params.put("createdby", created_by);
 
                 return params;
 
