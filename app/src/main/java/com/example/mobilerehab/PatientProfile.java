@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -35,7 +34,6 @@ public class PatientProfile extends AppCompatActivity {
     final String updateUrl = "http://10.131.73.39/MobileRehab/patient.php";
     final Calendar calendar = Calendar.getInstance();
     EditText editText_patientname, editText_patienticnumber, editText_patientaddress, editText_patientphonenumber, editText_patientstartdate;
-    TextView textView_user_id;
     Button button_patientsave;
     DatePickerDialog datePickerDialog;
 

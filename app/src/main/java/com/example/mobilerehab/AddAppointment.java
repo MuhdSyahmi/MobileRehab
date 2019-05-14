@@ -44,10 +44,7 @@ import static com.example.mobilerehab.SharedPref.mCtx;
 
 public class AddAppointment extends AppCompatActivity {
 
-    final String appointmentUrl = "http://10.131.73.39/MobileRehab/appointment.php";
-    SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-    final String appointment_doctorid = sharedPreferences.getString("user_id", "");
-    final String spinnerUrl = "http://10.131.73.39/MobileRehab/appointmentspinner.php?appointment_doctorid=" + appointment_doctorid;
+    final String appointmentUrl = "http://192.168.1.48/MobileRehab/appointment.php";
 
     EditText editText_patientid, editText_patientname, editText_appointmentdate, editText_appointmenttime;
     Button button_addappointment;
@@ -62,8 +59,6 @@ public class AddAppointment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addappointment);
-
-        Toast.makeText(getApplicationContext(), appointment_doctorid, Toast.LENGTH_SHORT).show();
 
         editText_patientid = findViewById(R.id.editText_patientid);
         editText_patientname = findViewById(R.id.editText_patientname);
@@ -115,10 +110,9 @@ public class AddAppointment extends AppCompatActivity {
         });
 
         textView_userid = findViewById(R.id.textView_userid);
-        SharedPreferences sharedPreferences = getSharedPreferences("SharedPref", Context.MODE_PRIVATE);
-        String doctor_id = sharedPreferences.getString("user_id", "");
+        String user_id = SharedPref.getInstance(this).LoggedInUser();
         textView_userid = findViewById(R.id.textView_userid);
-        textView_userid.setText(doctor_id);
+        textView_userid.setText(user_id);
 
         populateSpinner();
         spinner = findViewById(R.id.spinner_patientname);
@@ -141,6 +135,8 @@ public class AddAppointment extends AppCompatActivity {
     }
 
     private void populateSpinner() {
+        final String user_id = textView_userid.getText().toString();
+        final String spinnerUrl = "http://192.168.1.48/MobileRehab/appointmentspinner.php?appointment_doctorid=" + user_id;
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(spinnerUrl, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -148,7 +144,7 @@ public class AddAppointment extends AppCompatActivity {
                     try {
                         JSONObject jsonObject = response.getJSONObject(i);
                         SpinnerData spinnerData = new SpinnerData();
-                        spinnerData.setPatient_id(jsonObject.getInt("patient_id"));
+                        spinnerData.setPatient_id(jsonObject.getInt("user_id"));
                         spinnerData.setPatient_name(jsonObject.getString("patient_name"));
                         spinnerDataArrayList.add(spinnerData);
 

@@ -28,7 +28,7 @@ public class DoctorHome extends AppCompatActivity {
         button_viewpatient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), DoctorViewPatient.class);
+                Intent intent = new Intent(getApplicationContext(), ViewPatient.class);
                 startActivity(intent);
             }
         });

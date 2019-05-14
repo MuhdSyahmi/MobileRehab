@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,8 +26,8 @@ import java.util.Map;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
-    EditText editText_loginusername, editText_loginpassword;
-    final String loginURL = "http://10.131.73.39/MobileRehab/login.php";
+    final String loginURL = "http://192.168.1.48/MobileRehab/login.php";
+    TextInputLayout editText_loginusername, editText_loginpassword;
     Button button_login;
     Vibrator v;
     TextView textView_roles, textView_userid, textView_createdby;
@@ -36,8 +36,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        editText_loginusername = findViewById(R.id.editText_loginusername);
-        editText_loginpassword = findViewById(R.id.editText_loginpassword);
+        editText_loginusername = findViewById(R.id.textinput_email);
+        editText_loginpassword = findViewById(R.id.textinput_password);
         textView_roles = findViewById(R.id.textView_roles);
         textView_userid = findViewById(R.id.textView_userid);
         textView_createdby = findViewById(R.id.textView_createdby);
@@ -54,8 +54,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
     private void validateUserData() {
 
-        final String email_address = editText_loginusername.getText().toString();
-        final String password = editText_loginpassword.getText().toString();
+        final String email_address = editText_loginusername.getEditText().getText().toString();
+        final String password = editText_loginpassword.getEditText().getText().toString();
 
         if (TextUtils.isEmpty(email_address)) {
             editText_loginusername.setError("Please enter your email");
@@ -85,8 +85,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     private void loginUser() {
 
-        final String email_address = editText_loginusername.getText().toString();
-        final String password = editText_loginpassword.getText().toString();
+        final String email_address = editText_loginusername.getEditText().getText().toString();
+        final String password = editText_loginpassword.getEditText().getText().toString();
         final String roles = textView_roles.getText().toString();
         final String user_id = textView_userid.getText().toString();
         final String created_by = textView_createdby.getText().toString();
@@ -114,7 +114,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                 String UserID = jsonObject.getString("user_id");
                                 SharedPref.getInstance(getApplicationContext()).storeUserId(UserID);
 
+
                                 String roles = jsonObject.getString("roles");
+                                SharedPref.getInstance(getApplicationContext()).storeRoles(roles);
 
                                 if(roles.equals("Doctor"))
                                 {

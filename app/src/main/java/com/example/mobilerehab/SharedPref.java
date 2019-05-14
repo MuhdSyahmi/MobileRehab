@@ -12,19 +12,19 @@ public class SharedPref {
 
     public static final String USER_ID = "user_id";
 
-    public static final String DOCTOR_NAME = "doctor_name";
-
     public static final String CREATED_BY = "createdby";
+
+    public static final String ROLES = "roles";
+
+    public static final String LOGGED_IN_PREF = "logged_in_status";
 
     public static SharedPref mInstance;
 
     public static Context mCtx;
 
-
     public SharedPref(Context context) {
         mCtx = context;
     }
-
 
     public static synchronized SharedPref getInstance(Context context) {
         if (mInstance == null) {
@@ -37,48 +37,54 @@ public class SharedPref {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(EMAIL_ADDRESS, email);
-        editor.commit();
+        editor.apply();
     }
 
-    public void storeUserId(String userid) {
+    public String storeUserId(String userid) {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(USER_ID, userid);
-        editor.commit();
+        editor.apply();
+        return sharedPreferences.getString(USER_ID, null);
     }
 
     public void storeCreatedBy(String createdby) {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(CREATED_BY, createdby);
-        editor.commit();
+        editor.apply();
     }
 
-    public void storeDoctorName(String doctorname) {
+    public void storeRoles(String roles) {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(DOCTOR_NAME, doctorname);
-        editor.commit();
+        editor.putString(ROLES, roles);
+        editor.apply();
     }
 
     public boolean isLoggedIn() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        return sharedPreferences.getString(EMAIL_ADDRESS, null) != null;
+        return sharedPreferences.getString(USER_ID, null) != null;
     }
 
+    public static void setLoggedIn(boolean loggedIn) {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(LOGGED_IN_PREF, loggedIn);
+        editor.apply();
+    }
 
     public String LoggedInUser() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        return sharedPreferences.getString(EMAIL_ADDRESS, null);
-
+        return sharedPreferences.getString(USER_ID, null);
     }
 
     public void logout() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
-        editor.commit();
-        mCtx.startActivity(new Intent(mCtx, DoctorHome.class));
+        editor.apply();
+        mCtx.startActivity(new Intent(mCtx, Login.class));
     }
 
 }

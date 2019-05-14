@@ -13,11 +13,35 @@
     tools:context=".PatientHome">
 
     <TextView
+        android:id="@+id/textView_startdate"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/textView_datecounter"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView_startdate"
+        android:layout_centerHorizontal="true"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/textView_userid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
+
+    <TextView
         android:id="@+id/textView_randomquotes"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="600dp"
+        android:gravity="center" />
 
     <android.support.v7.widget.GridLayout
         android:layout_width="match_parent"
@@ -76,4 +100,15 @@
             app:layout_row="1" />
 
     </android.support.v7.widget.GridLayout>
+
+    <Button
+        android:id="@+id/button_logout"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="600dp"
+        android:background="@drawable/roundedcorner"
+        android:gravity="center"
+        android:text="@string/logout"
+        android:textAlignment="center" />
 </RelativeLayout>

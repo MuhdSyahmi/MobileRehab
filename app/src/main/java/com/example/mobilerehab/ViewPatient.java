@@ -22,9 +22,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DoctorViewPatient extends AppCompatActivity implements ViewPatientAdapter.OnPatientListener {
+public class ViewPatient extends AppCompatActivity implements ViewPatientAdapter.OnPatientListener {
 
-    final String patientUrl = "http://10.131.73.39/MobileRehab/viewpatient.php";
+    final String patientUrl = "http://192.168.1.48/MobileRehab/viewpatient.php";
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private DividerItemDecoration dividerItemDecoration;
