@@ -46,7 +46,7 @@ public class DoctorHome extends AppCompatActivity {
         button_viewappointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(getApplicationContext(),Schedule.class);
+                Intent intent2 = new Intent(getApplicationContext(), ViewAppointment.class);
                 startActivity(intent2);
             }
         });

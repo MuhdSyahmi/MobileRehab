@@ -44,8 +44,7 @@
         <activity android:name=".PatientSchedule" />
         <activity android:name=".PatientProfile" />
         <activity android:name=".PatientHome" />
-        <activity android:name=".ScheduleInfo" />
-        <activity android:name=".Schedule" />
+        <activity android:name=".AppointmentDetails" />
         <activity android:name=".AddAppointment" />
         <activity android:name=".QrGenerate" />
         <activity android:name=".QrScanner" />

@@ -217,6 +217,7 @@ public class AddAppointment extends AppCompatActivity {
             }
         };
         VolleySingleton.getInstance(AddAppointment.this).addToRequestQueue(stringRequest);
+        startActivity(new Intent(getApplicationContext(), DoctorHome.class));
     }
 }
 

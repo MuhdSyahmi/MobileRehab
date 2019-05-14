@@ -2,7 +2,6 @@ package com.example.mobilerehab;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
@@ -24,12 +23,9 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.mobilerehab.SharedPref.SHARED_PREF_NAME;
-import static com.example.mobilerehab.SharedPref.mCtx;
-
 public class AddPatient extends AppCompatActivity {
 
-    final String addpatientUrl = "http://10.131.73.39/MobileRehab/addpatient.php";
+    final String addpatientUrl = "http://192.168.1.48/MobileRehab/addpatient.php";
     Button button_signup;
     Vibrator v;
     EditText editText_patientemail, editText_patientpassword, editText_patientconfirmpassword;
@@ -94,8 +90,7 @@ public class AddPatient extends AppCompatActivity {
 
         final String email_address = editText_patientemail.getText().toString();
         final String password = editText_patientpassword.getText().toString();
-        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        final String createdby = sharedPreferences.getString("user_id", "");
+        final String user_id = SharedPref.getInstance(this).LoggedInUser();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, addpatientUrl,
                 new Response.Listener<String>() {
@@ -129,12 +124,13 @@ public class AddPatient extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("email_address",email_address);
                 params.put("password", password);
-                params.put("createdby", createdby);
+                params.put("createdby", user_id);
 
                 return params;
             }
         };
         VolleySingleton.getInstance(AddPatient.this).addToRequestQueue(stringRequest);
+        startActivity(new Intent(getApplicationContext(), DoctorHome.class));
     }
 
 }

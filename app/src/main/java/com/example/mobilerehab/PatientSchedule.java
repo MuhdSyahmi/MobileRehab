@@ -14,7 +14,7 @@ public class PatientSchedule extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private DividerItemDecoration dividerItemDecoration;
-    private List<ScheduleData> scheduleDataList;
+    private List<ViewAppointmentData> viewAppointmentDataList;
     private RecyclerView.Adapter adapter;
 
     @Override

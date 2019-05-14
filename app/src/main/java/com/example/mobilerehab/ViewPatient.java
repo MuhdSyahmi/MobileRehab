@@ -8,6 +8,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,7 +25,7 @@ import java.util.List;
 
 public class ViewPatient extends AppCompatActivity implements ViewPatientAdapter.OnPatientListener {
 
-    final String patientUrl = "http://192.168.1.48/MobileRehab/viewpatient.php";
+    private TextView textView_userid;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private DividerItemDecoration dividerItemDecoration;
@@ -34,7 +35,7 @@ public class ViewPatient extends AppCompatActivity implements ViewPatientAdapter
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctor_view_patient);
+        setContentView(R.layout.activity_view_patient);
 
         recyclerView = findViewById(R.id.RecylerView_viewpatient);
         viewPatientDataList = new ArrayList<>();
@@ -47,10 +48,17 @@ public class ViewPatient extends AppCompatActivity implements ViewPatientAdapter
         recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setAdapter(adapter);
 
-        retrieveDataJSON();
+        textView_userid = findViewById(R.id.textView_userid);
+        String user_id = SharedPref.getInstance(this).LoggedInUser();
+        textView_userid.setText(user_id);
+
+        getPatientList();
     }
 
-    private void retrieveDataJSON() {
+    private void getPatientList() {
+
+        final String user_id = textView_userid.getText().toString();
+        final String patientUrl = "http://192.168.1.48/MobileRehab/viewpatient.php?user_id=" + user_id;
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Retrieving Data, Please Wait");
         progressDialog.show();
@@ -89,7 +97,7 @@ public class ViewPatient extends AppCompatActivity implements ViewPatientAdapter
     public void onPatientClick(int position) {
 
         ViewPatientData viewPatientData = viewPatientDataList.get(position);
-        Intent intent = new Intent(this, ScheduleInfo.class);
+        Intent intent = new Intent(this, AppointmentDetails.class);
         startActivity(intent);
 
     }
