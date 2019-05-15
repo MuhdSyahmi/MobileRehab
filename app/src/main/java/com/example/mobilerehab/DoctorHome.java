@@ -9,6 +9,7 @@ import android.widget.Button;
 public class DoctorHome extends AppCompatActivity {
 
     Button button_addpatient, button_addappointment, button_viewappointment, button_viewpatient;
+    Button button_logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +38,8 @@ public class DoctorHome extends AppCompatActivity {
         button_addappointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(getApplicationContext(), AddAppointment.class);
-                startActivity(intent1);
+                Intent intent = new Intent(getApplicationContext(), AddAppointment.class);
+                startActivity(intent);
             }
         });
 
@@ -46,8 +47,19 @@ public class DoctorHome extends AppCompatActivity {
         button_viewappointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(getApplicationContext(), ViewAppointment.class);
-                startActivity(intent2);
+                Intent intent = new Intent(getApplicationContext(), ViewAppointment.class);
+                startActivity(intent);
+            }
+        });
+
+        button_logout = findViewById(R.id.button_logout);
+        button_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPref.getInstance(getApplicationContext()).logout();
+                Intent intent = new Intent(getApplicationContext(), Login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
         });
     }

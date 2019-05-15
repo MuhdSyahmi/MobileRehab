@@ -69,4 +69,16 @@
             app:layout_row="1" />
 
     </android.support.v7.widget.GridLayout>
+
+    <Button
+        android:id="@+id/button_logout"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="600dp"
+        android:background="@drawable/roundedcorner"
+        android:gravity="center"
+        android:text="@string/logout"
+        android:textAlignment="center" />
+
 </RelativeLayout>
