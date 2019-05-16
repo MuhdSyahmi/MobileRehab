@@ -29,13 +29,15 @@ public class PatientHome extends AppCompatActivity {
 
     Button button_patientviewlocation;
     Button button_patientscanqr;
+    Button button_patientviewappointment;
     Button button_patientviewprofile;
+    Button button_call;
     Button button_logout;
     TextView textView_randomquotes, textView_startdate, textView_datecounter, textView_userid;
 
     String quotes, startdate;
 
-    String quotesUrl = "http://192.168.1.48/MobileRehab/quotes.php";
+    String quotesUrl = "http://10.131.73.39/MobileRehab/quotes.php";
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -61,11 +63,29 @@ public class PatientHome extends AppCompatActivity {
             }
         });
 
+        button_patientviewappointment = findViewById(R.id.button_patientviewappointment);
+        button_patientviewappointment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), PatientViewAppointment.class);
+                startActivity(intent);
+            }
+        });
+
         button_patientscanqr = findViewById(R.id.button_patientscanqr);
         button_patientscanqr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),QrScanner.class);
+                startActivity(intent);
+            }
+        });
+
+        button_call = findViewById(R.id.button_call);
+        button_call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), EmergencyContacts.class);
                 startActivity(intent);
             }
         });
@@ -131,7 +151,7 @@ public class PatientHome extends AppCompatActivity {
 
         final String user_id = textView_userid.getText().toString();
 
-        String datecounterUrl = "http://192.168.1.48/MobileRehab/datecounter.php?user_id=" + user_id;
+        String datecounterUrl = "http://10.131.73.39/MobileRehab/datecounter.php?user_id=" + user_id;
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(datecounterUrl, new Response.Listener<JSONArray>() {
             @Override

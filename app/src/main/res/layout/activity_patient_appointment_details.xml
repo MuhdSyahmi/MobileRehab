@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PatientAppointmentDetails">
+
+    <TextView
+        android:id="@+id/textView_userid"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/textView_appointmentid"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_userid"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/textView_doctorid"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_userid"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/textView_patient_name"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView_appointmentid"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/textView_appointmenttime"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView_patient_name" />
+
+    <TextView
+        android:id="@+id/textView_appointmentdate"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView_appointmenttime" />
+
+    <Button
+        android:id="@+id/button_scanqr"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/textView_appointmentdate"
+        android:text="@string/scan_qr" />
+
+</RelativeLayout>

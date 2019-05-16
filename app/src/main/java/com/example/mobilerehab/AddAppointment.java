@@ -44,7 +44,7 @@ import static com.example.mobilerehab.SharedPref.mCtx;
 
 public class AddAppointment extends AppCompatActivity {
 
-    final String appointmentUrl = "http://192.168.1.48/MobileRehab/appointment.php";
+    final String appointmentUrl = "http://10.131.73.39/MobileRehab/appointment.php";
 
     EditText editText_patientid, editText_patientname, editText_appointmentdate, editText_appointmenttime;
     Button button_addappointment;
@@ -136,7 +136,7 @@ public class AddAppointment extends AppCompatActivity {
 
     private void populateSpinner() {
         final String user_id = textView_userid.getText().toString();
-        final String spinnerUrl = "http://192.168.1.48/MobileRehab/appointmentspinner.php?appointment_doctorid=" + user_id;
+        final String spinnerUrl = "http://10.131.73.39/MobileRehab/appointmentspinner.php?appointment_doctorid=" + user_id;
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(spinnerUrl, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {

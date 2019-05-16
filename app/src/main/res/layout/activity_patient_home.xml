@@ -99,6 +99,17 @@
             app:layout_column="1"
             app:layout_row="1" />
 
+        <Button
+            android:id="@+id/button_call"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:background="@drawable/roundedcorner"
+            android:gravity="center"
+            android:text="@string/emergency_call"
+            android:textAlignment="center"
+            app:layout_column="0"
+            app:layout_row="2" />
+
     </android.support.v7.widget.GridLayout>
 
     <Button
@@ -106,7 +117,7 @@
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="670dp"
         android:background="@drawable/roundedcorner"
         android:gravity="center"
         android:text="@string/logout"

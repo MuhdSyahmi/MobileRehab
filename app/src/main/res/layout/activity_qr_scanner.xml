@@ -7,21 +7,28 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin">
 
-
-    <Button
-        android:id="@+id/btnTakePicture"
+    <TextView
+        android:id="@+id/textView_doctorid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/take_barcode_picture" />
+        android:layout_below="@id/textView_scandoctorid" />
 
-    <Button
-        android:id="@+id/btnScanBarcode"
+    <TextView
+        android:id="@+id/textView_scandoctorid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnTakePicture"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:text="@string/scan_barcode" />
+        android:layout_below="@id/button_startscan" />
+
+    <TextView
+        android:id="@+id/textView_appointmentid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_doctorid" />
+
+    <Button
+        android:id="@+id/button_startscan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_scan" />
+
 </RelativeLayout>
