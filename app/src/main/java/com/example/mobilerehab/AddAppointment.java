@@ -2,9 +2,7 @@ package com.example.mobilerehab;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
@@ -39,14 +37,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static android.R.layout.simple_spinner_item;
-import static com.example.mobilerehab.SharedPref.SHARED_PREF_NAME;
-import static com.example.mobilerehab.SharedPref.mCtx;
 
 public class AddAppointment extends AppCompatActivity {
 
-    final String appointmentUrl = "http://10.131.73.39/MobileRehab/appointment.php";
+    final String appointmentUrl = "http://192.168.1.48/MobileRehab/appointment.php";
 
-    EditText editText_patientid, editText_patientname, editText_appointmentdate, editText_appointmenttime;
+    EditText editText_patientid, editText_patientname, editText_patientemail, editText_appointmentdate, editText_appointmenttime;
     Button button_addappointment;
     TextView textView_userid;
     DatePickerDialog datePickerDialog;
@@ -62,6 +58,7 @@ public class AddAppointment extends AppCompatActivity {
 
         editText_patientid = findViewById(R.id.editText_patientid);
         editText_patientname = findViewById(R.id.editText_patientname);
+        editText_patientemail = findViewById(R.id.editText_patientemail);
         editText_appointmentdate = findViewById(R.id.editText_appointmentdate);
         editText_appointmentdate.setInputType(InputType.TYPE_NULL);
         editText_appointmentdate.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +103,7 @@ public class AddAppointment extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addAppointment();
+                Intent intent = new Intent(Intent.ACTION_SEND);
             }
         });
 
@@ -116,7 +114,7 @@ public class AddAppointment extends AppCompatActivity {
 
         populateSpinner();
         spinner = findViewById(R.id.spinner_patientname);
-        patient_name = new ArrayList<String>();
+        patient_name = new ArrayList<>();
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -136,7 +134,7 @@ public class AddAppointment extends AppCompatActivity {
 
     private void populateSpinner() {
         final String user_id = textView_userid.getText().toString();
-        final String spinnerUrl = "http://10.131.73.39/MobileRehab/appointmentspinner.php?appointment_doctorid=" + user_id;
+        final String spinnerUrl = "http://192.168.1.48/MobileRehab/appointmentspinner.php?appointment_doctorid=" + user_id;
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(spinnerUrl, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -170,8 +168,8 @@ public class AddAppointment extends AppCompatActivity {
     }
 
     private void addAppointment() {
-        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        final String appointment_doctorid = sharedPreferences.getString("user_id", "");
+
+        final String appointment_doctorid = SharedPref.getInstance(this).LoggedInUser();
         final String appointment_patientid = editText_patientid.getText().toString();
         final String appointment_date = editText_appointmentdate.getText().toString();
         final String appointment_time = editText_appointmenttime.getText().toString();

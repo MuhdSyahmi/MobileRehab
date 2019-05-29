@@ -1,7 +1,6 @@
 package com.example.mobilerehab;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 
 public class SharedPref {
@@ -33,11 +32,12 @@ public class SharedPref {
         return mInstance;
     }
 
-    public void storeUserName(String email) {
+    public String storeUserName(String email) {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(EMAIL_ADDRESS, email);
         editor.apply();
+        return sharedPreferences.getString(EMAIL_ADDRESS, null);
     }
 
     public String storeUserId(String userid) {
@@ -62,21 +62,14 @@ public class SharedPref {
         editor.apply();
     }
 
-    public boolean isLoggedIn() {
-        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        return sharedPreferences.getString(USER_ID, null) != null;
-    }
-
-    public static void setLoggedIn(boolean loggedIn) {
-        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(LOGGED_IN_PREF, loggedIn);
-        editor.apply();
-    }
-
     public String LoggedInUser() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(USER_ID, null);
+    }
+
+    public String LoggedInUsername() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(EMAIL_ADDRESS, null);
     }
 
     public void logout() {
@@ -84,7 +77,6 @@ public class SharedPref {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
-        mCtx.startActivity(new Intent(mCtx, Login.class));
     }
 
 }

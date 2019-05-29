@@ -9,7 +9,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -52,7 +51,6 @@ public class PatientViewAppointment extends AppCompatActivity implements Patient
         textView_userid = findViewById(R.id.textView_userid);
         String user_id = SharedPref.getInstance(this).LoggedInUser();
         textView_userid.setText(user_id);
-        Toast.makeText(getApplicationContext(), user_id, Toast.LENGTH_SHORT);
 
         getAppointmentList();
     }
@@ -78,6 +76,7 @@ public class PatientViewAppointment extends AppCompatActivity implements Patient
                         patientViewAppointmentData.setPatient_name(jsonObject.getString("patient_name"));
                         patientViewAppointmentData.setAppointment_time(jsonObject.getString("appointment_time"));
                         patientViewAppointmentData.setAppointment_date(jsonObject.getString("appointment_date"));
+                        patientViewAppointmentData.setAppointment_status(jsonObject.getString("appointment_status"));
                         patientViewAppointmentDataList.add(patientViewAppointmentData);
 
                     } catch (JSONException e) {
@@ -110,6 +109,7 @@ public class PatientViewAppointment extends AppCompatActivity implements Patient
         intent.putExtra("extra_patientname", patientViewAppointmentData.getPatient_name());
         intent.putExtra("extra_appointmenttime", patientViewAppointmentData.getAppointment_time());
         intent.putExtra("extra_appointmentdate", patientViewAppointmentData.getAppointment_date());
+        intent.putExtra("extra_appointmentstatus", patientViewAppointmentData.getAppointment_status());
         startActivity(intent);
     }
 }

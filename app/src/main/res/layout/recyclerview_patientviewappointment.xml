@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/colorRecyclerView"
+    android:fontFamily="sans-serif-condensed-medium"
     android:orientation="vertical">
 
     <TextView
@@ -25,16 +27,26 @@
     <TextView
         android:id="@+id/textView_patient_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textView_patient_appointmenttime"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-medium" />
 
     <TextView
         android:id="@+id/textView_patient_appointmentdate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-medium" />
+
+    <TextView
+        android:id="@+id/textView_patient_appointmentstatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-medium" />
 
 </LinearLayout>

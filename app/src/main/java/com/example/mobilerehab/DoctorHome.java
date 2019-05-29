@@ -58,7 +58,7 @@ public class DoctorHome extends AppCompatActivity {
             public void onClick(View v) {
                 SharedPref.getInstance(getApplicationContext()).logout();
                 Intent intent = new Intent(getApplicationContext(), Login.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });

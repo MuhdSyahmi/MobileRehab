@@ -28,7 +28,6 @@ import java.util.Random;
 public class PatientHome extends AppCompatActivity {
 
     Button button_patientviewlocation;
-    Button button_patientscanqr;
     Button button_patientviewappointment;
     Button button_patientviewprofile;
     Button button_call;
@@ -37,7 +36,7 @@ public class PatientHome extends AppCompatActivity {
 
     String quotes, startdate;
 
-    String quotesUrl = "http://10.131.73.39/MobileRehab/quotes.php";
+    String quotesUrl = "http://192.168.1.48/MobileRehab/quotes.php";
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -68,15 +67,6 @@ public class PatientHome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PatientViewAppointment.class);
-                startActivity(intent);
-            }
-        });
-
-        button_patientscanqr = findViewById(R.id.button_patientscanqr);
-        button_patientscanqr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),QrScanner.class);
                 startActivity(intent);
             }
         });
@@ -151,7 +141,7 @@ public class PatientHome extends AppCompatActivity {
 
         final String user_id = textView_userid.getText().toString();
 
-        String datecounterUrl = "http://10.131.73.39/MobileRehab/datecounter.php?user_id=" + user_id;
+        String datecounterUrl = "http://192.168.1.48/MobileRehab/datecounter.php?user_id=" + user_id;
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(datecounterUrl, new Response.Listener<JSONArray>() {
             @Override
@@ -192,7 +182,7 @@ public class PatientHome extends AppCompatActivity {
                         long diff = currentDate.getTime() - futureDate.getTime();
                         long days = diff / (24 * 60 * 60 * 1000);
                         diff -= days * (24 * 60 * 60 * 1000);
-                        textView_datecounter.setText("" + String.format("%02d", days));
+                        textView_datecounter.setText("Congratulations, you have been away from drugs for " + String.format("%02d", days) + " days");
                     } else {
                         textView_datecounter.setText("No Date");
                     }

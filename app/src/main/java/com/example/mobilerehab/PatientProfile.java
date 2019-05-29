@@ -1,8 +1,10 @@
 package com.example.mobilerehab;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -40,7 +42,7 @@ public class PatientProfile extends AppCompatActivity {
 
     final String updateUrl = "http://192.168.1.48/MobileRehab/patient.php";
     final Calendar calendar = Calendar.getInstance();
-    EditText editText_patientname, editText_patienticnumber, editText_patientaddress, editText_patientphonenumber, editText_patientstartdate;
+    EditText editText_patientname, editText_patienticnumber, editText_patientaddress, editText_patientphonenumber, editText_patientemail, editText_patientstartdate;
     TextView textView_userid;
     Button button_patientsave;
     DatePickerDialog datePickerDialog;
@@ -54,6 +56,7 @@ public class PatientProfile extends AppCompatActivity {
         editText_patienticnumber = findViewById(R.id.editText_patienticnumber);
         editText_patientaddress = findViewById(R.id.editText_patientaddress);
         editText_patientphonenumber = findViewById(R.id.editText_patientphonenumber);
+        editText_patientemail = findViewById(R.id.editText_patientemail);
         editText_patientstartdate = findViewById(R.id.editText_patientstartdate);
 
         editText_patientstartdate.setInputType(InputType.TYPE_NULL);
@@ -79,7 +82,7 @@ public class PatientProfile extends AppCompatActivity {
         button_patientsave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateProfile();
+                updateAlert();
             }
         });
 
@@ -88,6 +91,34 @@ public class PatientProfile extends AppCompatActivity {
         textView_userid.setText(user_id);
 
         populateProfile();
+    }
+
+    private void updateAlert() {
+
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setTitle("Profile update");
+        alertDialog.setMessage("Are you sure you want to continue?");
+        alertDialog.setCancelable(false);
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                updateProfile();
+            }
+        });
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        alertDialog.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        AlertDialog alertdialog = alertDialog.create();
+        alertdialog.show();
     }
 
     private void populateProfile() {
@@ -109,12 +140,14 @@ public class PatientProfile extends AppCompatActivity {
                         patientData.setPatient_icnumber(jsonObject.getString("patient_icnumber"));
                         patientData.setPatient_address(jsonObject.getString("patient_address"));
                         patientData.setPatient_phonenumber(jsonObject.getString("patient_phonenumber"));
+                        patientData.setPatient_email(jsonObject.getString("patient_email"));
                         patientData.setPatient_startdate(jsonObject.getString("patient_startdate"));
 
                         editText_patientname.setText(patientData.getPatient_name());
                         editText_patienticnumber.setText(patientData.getPatient_icnumber());
                         editText_patientaddress.setText(patientData.getPatient_address());
                         editText_patientphonenumber.setText(patientData.getPatient_phonenumber());
+                        editText_patientemail.setText(patientData.getPatient_email());
                         editText_patientstartdate.setText(patientData.getPatient_startdate());
 
                     } catch (JSONException e) {
@@ -145,6 +178,7 @@ public class PatientProfile extends AppCompatActivity {
         final String patient_icnumber = editText_patienticnumber.getText().toString();
         final String patient_address = editText_patientaddress.getText().toString();
         final String patient_phonenumber = editText_patientphonenumber.getText().toString();
+        final String patient_email = editText_patientemail.getText().toString();
         final String patient_startdate = editText_patientstartdate.getText().toString();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,updateUrl,
@@ -190,12 +224,14 @@ public class PatientProfile extends AppCompatActivity {
                 params.put("patient_icnumber", patient_icnumber);
                 params.put("patient_address", patient_address);
                 params.put("patient_phonenumber", patient_phonenumber);
+                params.put("patient_email", patient_email);
                 params.put("patient_startdate", patient_startdate);
 
                 return params;
             }
         };
         VolleySingleton.getInstance(PatientProfile.this).addToRequestQueue(stringRequest);
+        startActivity(new Intent(getApplicationContext(), PatientHome.class));
     }
 
 }

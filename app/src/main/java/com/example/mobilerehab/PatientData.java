@@ -6,18 +6,20 @@ public class PatientData {
     String patient_icnumber;
     String patient_address;
     String patient_phonenumber;
+    String patient_email;
     String patient_startdate;
 
     public PatientData() {
 
     }
 
-    public PatientData(String patient_name, String patient_icnumber, String patient_address, String patient_phonenumber, String patient_startdate) {
+    public PatientData(String patient_name, String patient_icnumber, String patient_address, String patient_phonenumber, String patient_email, String patient_startdate) {
 
         this.patient_name = patient_name;
         this.patient_icnumber = patient_icnumber;
         this.patient_address = patient_address;
         this.patient_phonenumber = patient_phonenumber;
+        this.patient_email = patient_email;
         this.patient_startdate = patient_startdate;
 
     }
@@ -52,6 +54,14 @@ public class PatientData {
 
     public void setPatient_phonenumber(String patient_phonenumber) {
         this.patient_phonenumber = patient_phonenumber;
+    }
+
+    public String getPatient_email() {
+        return patient_email;
+    }
+
+    public void setPatient_email(String patient_email) {
+        this.patient_email = patient_email;
     }
 
     public String getPatient_startdate() {

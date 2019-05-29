@@ -39,6 +39,7 @@ public class PatientViewAppointmentAdapter extends RecyclerView.Adapter<PatientV
         viewHolder.textView_patient_name.setText(patientViewAppointmentData.getPatient_name());
         viewHolder.textView_appointment_time.setText(patientViewAppointmentData.getAppointment_time());
         viewHolder.textView_appointment_date.setText(patientViewAppointmentData.getAppointment_date());
+        viewHolder.textView_appointment_status.setText(patientViewAppointmentData.getAppointment_status());
     }
 
     @Override
@@ -52,7 +53,7 @@ public class PatientViewAppointmentAdapter extends RecyclerView.Adapter<PatientV
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView textView_userid, textView_appointmentid, textView_doctorid, textView_patient_name, textView_appointment_time, textView_appointment_date;
+        public TextView textView_userid, textView_appointmentid, textView_doctorid, textView_patient_name, textView_appointment_time, textView_appointment_date, textView_appointment_status;
         OnPatientAppointmentListener onPatientAppointmentListener;
 
         public ViewHolder(View view, OnPatientAppointmentListener onPatientAppointmentListener) {
@@ -63,6 +64,7 @@ public class PatientViewAppointmentAdapter extends RecyclerView.Adapter<PatientV
             textView_patient_name = view.findViewById(R.id.textView_patient_name);
             textView_appointment_time = view.findViewById(R.id.textView_patient_appointmenttime);
             textView_appointment_date = view.findViewById(R.id.textView_patient_appointmentdate);
+            textView_appointment_status = view.findViewById(R.id.textView_patient_appointmentstatus);
             this.onPatientAppointmentListener = onPatientAppointmentListener;
             view.setOnClickListener(this);
         }

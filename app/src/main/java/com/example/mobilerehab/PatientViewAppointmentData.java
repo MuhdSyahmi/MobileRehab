@@ -9,16 +9,19 @@ public class PatientViewAppointmentData {
     public String appointment_time;
     public String appointment_date;
 
+    public String appointment_status;
+
     public PatientViewAppointmentData() {
 
     }
 
-    public PatientViewAppointmentData(int user_id, int appointment_id, String patient_name, String appointment_time, String appointment_date) {
+    public PatientViewAppointmentData(int user_id, int appointment_id, String patient_name, String appointment_time, String appointment_date, String appointment_status) {
         this.user_id = user_id;
         this.appointment_id = appointment_id;
         this.patient_name = patient_name;
         this.appointment_time = appointment_time;
         this.appointment_date = appointment_date;
+        this.appointment_status = appointment_status;
     }
 
     public int getUser_id() {
@@ -68,6 +71,14 @@ public class PatientViewAppointmentData {
 
     public void setAppointment_date(String appointment_date) {
         this.appointment_date = appointment_date;
+    }
+
+    public String getAppointment_status() {
+        return appointment_status;
+    }
+
+    public void setAppointment_status(String appointment_status) {
+        this.appointment_status = appointment_status;
     }
 
 }

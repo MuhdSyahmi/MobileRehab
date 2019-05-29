@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MobileRehab</string>
     <string name="title_activity_maps">title_activity_maps</string>
-    <string name="update_profile">Update Profile</string>
+    <string name="update_profile">User Profile</string>
     <string name="add_user">Add User</string>
     <string name="add_appointment">Add Appointment</string>
     <string name="view_appointment">View Appointment</string>
@@ -15,7 +15,7 @@
     <string name="scan_barcode">Scan Barcode</string>
     <string name="view_profile">View Profile</string>
     <string name="view_location">View Location</string>
-    <string name="scan_qr">Scan QR</string>
+    <string name="scan_qr">Scan Attendance</string>
     <string name="view_user">View User</string>
     <string name="email_address">Email Address</string>
     <string name="password">Password</string>
@@ -29,4 +29,8 @@
     <string name="police">Police</string>
     <string name="hospital">Hospital</string>
     <string name="start_scan">start scan</string>
+    <string name="update_save">UPDATE / SAVE</string>
+    <string name="nearby_hospital">Nearby Hospital</string>
+    <string name="list_of_appointment">List of Appointment</string>
+    <string name="appointment_details">Appointment Details</string>
 </resources>
