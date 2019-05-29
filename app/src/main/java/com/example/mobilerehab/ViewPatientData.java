@@ -4,16 +4,16 @@ public class ViewPatientData {
 
     public int user_id;
     public String patient_name;
-    public int patient_icnumber;
+    public String patient_icnumber;
     public String patient_address;
-    public int patient_phonenumber;
+    public String patient_phonenumber;
     public String patient_startdate;
 
     public ViewPatientData() {
 
     }
 
-    public ViewPatientData(int user_id, String patient_name, int patient_icnumber, String patient_address, int patient_phonenumber, String patient_startdate) {
+    public ViewPatientData(int user_id, String patient_name, String patient_icnumber, String patient_address, String patient_phonenumber, String patient_startdate) {
 
         this.user_id = user_id;
         this.patient_name = patient_name;
@@ -40,11 +40,11 @@ public class ViewPatientData {
         this.patient_name = patient_name;
     }
 
-    public int getPatient_icnumber() {
+    public String getPatient_icnumber() {
         return patient_icnumber;
     }
 
-    public void setPatient_icnumber(int patient_icnumber) {
+    public void setPatient_icnumber(String patient_icnumber) {
         this.patient_icnumber = patient_icnumber;
     }
 
@@ -56,11 +56,11 @@ public class ViewPatientData {
         this.patient_address = patient_address;
     }
 
-    public int getPatient_phonenumber() {
+    public String getPatient_phonenumber() {
         return patient_phonenumber;
     }
 
-    public void setPatient_phonenumber(int patient_phonenumber) {
+    public void setPatient_phonenumber(String patient_phonenumber) {
         this.patient_phonenumber = patient_phonenumber;
     }
 

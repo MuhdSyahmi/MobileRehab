@@ -58,7 +58,7 @@ public class ViewPatient extends AppCompatActivity implements ViewPatientAdapter
     private void getPatientList() {
 
         final String user_id = textView_userid.getText().toString();
-        final String patientUrl = "http://192.168.43.166/MobileRehab/viewpatient.php?user_id=" + user_id;
+        final String patientUrl = "http://192.168.1.48/MobileRehab/viewpatient.php?user_id=" + user_id;
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Retrieving Data, Please Wait");
         progressDialog.show();
@@ -72,6 +72,10 @@ public class ViewPatient extends AppCompatActivity implements ViewPatientAdapter
                         ViewPatientData viewPatientData = new ViewPatientData();
                         viewPatientData.setUser_id(jsonObject.getInt("user_id"));
                         viewPatientData.setPatient_name(jsonObject.getString("patient_name"));
+                        viewPatientData.setPatient_icnumber(jsonObject.getString("patient_icnumber"));
+                        viewPatientData.setPatient_address(jsonObject.getString("patient_address"));
+                        viewPatientData.setPatient_phonenumber(jsonObject.getString("patient_phonenumber"));
+
                         viewPatientDataList.add(viewPatientData);
 
                     } catch (JSONException e) {
@@ -97,7 +101,11 @@ public class ViewPatient extends AppCompatActivity implements ViewPatientAdapter
     public void onPatientClick(int position) {
 
         ViewPatientData viewPatientData = viewPatientDataList.get(position);
-        Intent intent = new Intent(this, AppointmentDetails.class);
+        Intent intent = new Intent(this, ViewPatientDetails.class);
+        intent.putExtra("extra_patientname", viewPatientData.getPatient_name());
+        intent.putExtra("extra_patienticnumber", viewPatientData.getPatient_icnumber());
+        intent.putExtra("extra_patientaddress", viewPatientData.getPatient_address());
+        intent.putExtra("extra_patientphonenumber", viewPatientData.getPatient_phonenumber());
         startActivity(intent);
 
     }

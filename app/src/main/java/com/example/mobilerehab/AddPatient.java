@@ -75,12 +75,15 @@ public class AddPatient extends AppCompatActivity {
             return;
         }
 
-//        if (!editText_patientpassword.equals(editText_patientconfirmpassword)) {
-//            editText_patientconfirmpassword.setError("Password Does not Match");
-//            editText_patientconfirmpassword.requestFocus();
-//            v.vibrate(100);
-//            return;
-//        }
+        String passwordvalidate = editText_patientpassword.getText().toString();
+        String cpasswordvalidate = editText_patientconfirmpassword.getText().toString();
+
+        if (!passwordvalidate.equals(cpasswordvalidate)) {
+            editText_patientconfirmpassword.setError("Password Does not Match");
+            editText_patientconfirmpassword.requestFocus();
+            v.vibrate(100);
+            return;
+        }
 
         registerUser();
 

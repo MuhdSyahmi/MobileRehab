@@ -4,107 +4,80 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBGRecyclerView"
-    tools:context=".PatientAppointmentDetails">
+    tools:context=".ViewPatientDetails">
 
     <TextView
-        android:id="@+id/textView_userid"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/textView_appointmentid"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView_userid"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/textView_scandoctorid"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView_userid"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/textView_doctorid"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView_userid"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/textView_patient_name"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView_appointmentid"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/textView_ad"
+        android:id="@+id/textView_pd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:fontFamily="sans-serif-condensed-medium"
-        android:text="@string/appointment_details"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
+        android:text="@string/patient_details"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="30sp" />
 
     <TextView
-        android:id="@+id/textView_appointmenttime"
+        android:id="@+id/textView_patientname"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:layout_below="@id/textView_ad"
+        android:layout_below="@id/textView_pd"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@drawable/roundedcorner"
         android:backgroundTint="@color/colorRecyclerView"
         android:fontFamily="sans-serif-condensed-medium"
+        android:gravity="center_vertical"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/textView_appointmentdate"
+        android:id="@+id/textView_patienticnumber"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:layout_below="@id/textView_appointmenttime"
+        android:layout_below="@id/textView_patientname"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@drawable/roundedcorner"
         android:backgroundTint="@color/colorRecyclerView"
         android:fontFamily="sans-serif-condensed-medium"
+        android:gravity="center_vertical"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/textView_appointmentstatus"
+        android:id="@+id/textView_patientaddress"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:layout_below="@id/textView_appointmentdate"
+        android:layout_below="@id/textView_patienticnumber"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@drawable/roundedcorner"
         android:backgroundTint="@color/colorRecyclerView"
         android:fontFamily="sans-serif-condensed-medium"
+        android:gravity="center_vertical"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/button_scanqr"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_below="@id/textView_appointmentstatus"
+    <TextView
+        android:id="@+id/textView_patientphonenumber"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/textView_patientaddress"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@drawable/roundedcorner"
-        android:text="@string/scan_qr" />
+        android:backgroundTint="@color/colorRecyclerView"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textSize="20sp" />
 
 </RelativeLayout>

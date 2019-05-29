@@ -33,4 +33,9 @@
     <string name="nearby_hospital">Nearby Hospital</string>
     <string name="list_of_appointment">List of Appointment</string>
     <string name="appointment_details">Appointment Details</string>
+    <string name="create_new_appointment">Create New Appointment</string>
+    <string name="patient_details">Patient Details</string>
+    <string name="list_of_patient">List of Patient</string>
+    <string name="update_appointment">Update Appointment</string>
+    <string name="delete_appointment">Delete Appointment</string>
 </resources>

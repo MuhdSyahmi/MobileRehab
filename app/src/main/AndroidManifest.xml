@@ -23,7 +23,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PatientAppointmentDetails"></activity>
+        <activity android:name=".ViewPatientDetails"></activity>
+        <activity android:name=".PatientAppointmentDetails" />
         <activity android:name=".PatientViewAppointment" />
         <activity
             android:name=".EmergencyContacts"

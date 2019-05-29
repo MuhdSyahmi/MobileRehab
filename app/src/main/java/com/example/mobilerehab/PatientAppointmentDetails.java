@@ -148,7 +148,7 @@ public class PatientAppointmentDetails extends AppCompatActivity {
             }
         };
         VolleySingleton.getInstance(PatientAppointmentDetails.this).addToRequestQueue(stringRequest);
-
+        startActivity(new Intent(getApplicationContext(), PatientViewAppointment.class));
     }
 
 }

@@ -36,6 +36,9 @@ public class ViewPatientAdapter extends RecyclerView.Adapter<ViewPatientAdapter.
         ViewPatientData viewPatientData = list.get(position);
         viewHolder.textView_patientid.setText(String.valueOf(viewPatientData.getUser_id()));
         viewHolder.textView_patientname.setText(viewPatientData.getPatient_name());
+        viewHolder.textView_patienticnumber.setText(viewPatientData.getPatient_icnumber());
+        viewHolder.textView_patientaddress.setText(viewPatientData.getPatient_address());
+        viewHolder.textView_patientphonenumber.setText(viewPatientData.getPatient_phonenumber());
     }
 
     @Override
@@ -49,7 +52,7 @@ public class ViewPatientAdapter extends RecyclerView.Adapter<ViewPatientAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView textView_patientid, textView_patientname;
+        public TextView textView_patientid, textView_patientname, textView_patienticnumber, textView_patientaddress, textView_patientphonenumber;
         OnPatientListener onPatientListener;
 
         public ViewHolder(View view, OnPatientListener onPatientListener) {
@@ -58,6 +61,9 @@ public class ViewPatientAdapter extends RecyclerView.Adapter<ViewPatientAdapter.
 
             textView_patientid = view.findViewById(R.id.textView_patient_id);
             textView_patientname = view.findViewById(R.id.textView_patient_name);
+            textView_patienticnumber = view.findViewById(R.id.textView_patienticnumber);
+            textView_patientaddress = view.findViewById(R.id.textView_patientaddress);
+            textView_patientphonenumber = view.findViewById(R.id.textView_patientphonenumber);
             this.onPatientListener = onPatientListener;
 
             view.setOnClickListener(this);
