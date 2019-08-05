@@ -26,7 +26,7 @@ public class PatientAppointmentDetails extends AppCompatActivity {
 
     TextView textView_userid, textView_appointmentid, textView_doctorid, textView_scandoctorid, textView_patientname, textView_appointmenttime, textView_appointmentdate, textView_appointmentstatus;
     Button button_scanqr;
-    String attendanceUrl = "http://192.168.1.48/MobileRehab/attendance.php";
+    String attendanceUrl = "http://192.168.1.23/MobileRehab/attendance.php";
     private IntentIntegrator qrScan;
 
     @Override

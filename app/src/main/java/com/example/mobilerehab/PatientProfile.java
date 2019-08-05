@@ -40,7 +40,7 @@ import static com.example.mobilerehab.SharedPref.mCtx;
 
 public class PatientProfile extends AppCompatActivity {
 
-    final String updateUrl = "http://192.168.1.48/MobileRehab/patient.php";
+    final String updateUrl = "http://192.168.1.23/MobileRehab/patient.php";
     final Calendar calendar = Calendar.getInstance();
     EditText editText_patientname, editText_patienticnumber, editText_patientaddress, editText_patientphonenumber, editText_patientemail, editText_patientstartdate;
     TextView textView_userid;
@@ -124,7 +124,7 @@ public class PatientProfile extends AppCompatActivity {
     private void populateProfile() {
 
         final String user_id = textView_userid.getText().toString();
-        final String appointmentUrl = "http://192.168.1.48/MobileRehab/populateprofile.php?user_id=" + user_id;
+        final String appointmentUrl = "http://192.168.1.23/MobileRehab/populateprofile.php?user_id=" + user_id;
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Retrieving Data, Please Wait");
         progressDialog.show();

@@ -25,9 +25,36 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="30sp" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView_lop">
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="ID" />
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:gravity="center"
+            android:text="Name" />
+
+        <TextView
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="190dp"
+            android:gravity="center"
+            android:text="Ic Number" />
+
+    </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/RecylerView_viewpatient"
-        android:layout_width="370dp"
+        android:layout_width="390dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView_lop"
         android:layout_centerHorizontal="true"

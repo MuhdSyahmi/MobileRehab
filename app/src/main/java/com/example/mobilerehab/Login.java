@@ -26,7 +26,7 @@ import java.util.Map;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
-    final String loginURL = "http://192.168.1.48/MobileRehab/login.php";
+    final String loginURL = "http://192.168.1.23/MobileRehab/login.php";
     TextInputLayout editText_loginusername, editText_loginpassword;
     Button button_login;
     Vibrator v;

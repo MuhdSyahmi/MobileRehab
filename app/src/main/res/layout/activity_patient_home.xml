@@ -39,7 +39,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="600dp"
         android:fontFamily="sans-serif-condensed-medium"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:gravity="center" />
 
     <GridLayout

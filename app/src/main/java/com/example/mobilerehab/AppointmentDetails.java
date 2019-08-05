@@ -31,7 +31,7 @@ import java.util.Map;
 
 public class AppointmentDetails extends AppCompatActivity {
 
-    final String appointmentUrl = "http://192.168.1.48/MobileRehab/appointment.php";
+    final String appointmentUrl = "http://192.168.1.23/MobileRehab/appointment.php";
     EditText editText_appointmentdate, editText_appointmenttime;
     TextView textView_appointmentid, textView_patientname, textView_appointmentstatus;
     Button button_update, button_delete;
@@ -93,6 +93,7 @@ public class AppointmentDetails extends AppCompatActivity {
                         editText_appointmentdate.setText(year + "/" + (month + 1) + "/" + dayOfMonth);
                     }
                 }, year, month, day);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
                 datePickerDialog.show();
             }
         });

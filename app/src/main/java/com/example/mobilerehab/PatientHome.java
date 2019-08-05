@@ -38,7 +38,7 @@ public class PatientHome extends AppCompatActivity {
 
     String quotes, startdate;
 
-    String quotesUrl = "http://192.168.1.48/MobileRehab/quotes.php";
+    String quotesUrl = "http://192.168.1.23/MobileRehab/quotes.php";
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -172,7 +172,7 @@ public class PatientHome extends AppCompatActivity {
 
         final String user_id = textView_userid.getText().toString();
 
-        String datecounterUrl = "http://192.168.1.48/MobileRehab/datecounter.php?user_id=" + user_id;
+        String datecounterUrl = "http://192.168.1.23/MobileRehab/datecounter.php?user_id=" + user_id;
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(datecounterUrl, new Response.Listener<JSONArray>() {
             @Override
