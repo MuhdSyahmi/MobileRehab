@@ -29,7 +29,7 @@ public class ViewAppointment extends AppCompatActivity implements ViewAppointmen
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private DividerItemDecoration dividerItemDecoration;
-    private List<ViewAppointmentData> viewAppointmentDataList;
+    private List<ViewAppointmentData> viewAppointmentDataList = new ArrayList<>();
     private RecyclerView.Adapter adapter;
 
     @Override
@@ -38,7 +38,6 @@ public class ViewAppointment extends AppCompatActivity implements ViewAppointmen
         setContentView(R.layout.activity_view_appointment);
 
         recyclerView = findViewById(R.id.RecylerView_viewappointment);
-        viewAppointmentDataList = new ArrayList<>();
         adapter = new ViewAppointmentAdapter(getApplicationContext(), viewAppointmentDataList, this);
         linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);

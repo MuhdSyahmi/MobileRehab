@@ -7,6 +7,12 @@
     tools:context=".ViewPatientDetails">
 
     <TextView
+        android:id="@+id/textView_userid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <TextView
         android:id="@+id/textView_pd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,13 +86,31 @@
         android:paddingEnd="10dp"
         android:textSize="20sp" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="380dp">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="Date" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:gravity="center"
+            android:text="Time" />
+    </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/RecylerView_viewpatient"
+        android:id="@+id/RecylerView_viewpastappointment"
         android:layout_width="370dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView_patientphonenumber"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="400dp"
         android:background="@drawable/roundedcorner"
         android:backgroundTint="@color/colorRecyclerView"
         android:fontFamily="sans-serif-condensed-medium"

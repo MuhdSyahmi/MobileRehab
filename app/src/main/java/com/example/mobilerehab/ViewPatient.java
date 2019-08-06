@@ -102,6 +102,7 @@ public class ViewPatient extends AppCompatActivity implements ViewPatientAdapter
 
         ViewPatientData viewPatientData = viewPatientDataList.get(position);
         Intent intent = new Intent(this, ViewPatientDetails.class);
+        intent.putExtra("extra_userid", String.valueOf(viewPatientData.getUser_id()));
         intent.putExtra("extra_patientname", viewPatientData.getPatient_name());
         intent.putExtra("extra_patienticnumber", viewPatientData.getPatient_icnumber());
         intent.putExtra("extra_patientaddress", viewPatientData.getPatient_address());
