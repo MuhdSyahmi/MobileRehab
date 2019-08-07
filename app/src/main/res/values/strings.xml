@@ -2,8 +2,8 @@
     <string name="app_name">MobileRehab</string>
     <string name="title_activity_maps">title_activity_maps</string>
     <string name="update_profile">User Profile</string>
-    <string name="add_user">Add User</string>
-    <string name="add_appointment">Add Appointment</string>
+    <string name="add_user">Add Patient</string>
+    <string name="add_appointment">Create Appointment</string>
     <string name="view_appointment">View Appointment</string>
     <string name="full_name">Full Name</string>
     <string name="address">Address</string>
@@ -12,11 +12,11 @@
     <string name="days_away_from_drugs">Days Away From Drugs</string>
     <string name="identification_number">Identification Number</string>
     <string name="take_barcode_picture">Take Picture</string>
-    <string name="scan_barcode">Scan Barcode</string>
+    <string name="scan_barcode">Scan QR Code</string>
     <string name="view_profile">View Profile</string>
     <string name="view_location">View Location</string>
     <string name="scan_qr">Scan Attendance</string>
-    <string name="view_user">View User</string>
+    <string name="view_user">View Patient</string>
     <string name="email_address">Email Address</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
