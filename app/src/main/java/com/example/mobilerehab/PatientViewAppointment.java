@@ -58,7 +58,7 @@ public class PatientViewAppointment extends AppCompatActivity implements Patient
     private void getAppointmentList() {
 
         final String user_id = textView_userid.getText().toString();
-        final String appointmentUrl = "http://192.168.1.23/MobileRehab/appointment.php?selectFn=patientviewappointment&user_id=" + user_id;
+        final String appointmentUrl = "http://192.168.43.166/MobileRehab/appointment.php?selectFn=patientviewappointment&user_id=" + user_id;
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Retrieving Data, Please Wait");
         progressDialog.show();

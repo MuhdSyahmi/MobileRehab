@@ -26,7 +26,7 @@ public class QrScanner extends AppCompatActivity {
 
     TextView textView_doctorid, textView_appointmentid, textView_scandoctorid;
     Button button_startscan;
-    String attendanceUrl = "http://192.168.1.23/MobileRehab/attendance.php";
+    String attendanceUrl = "http://192.168.43.166/MobileRehab/attendance.php";
     private IntentIntegrator qrScan;
 
     @Override

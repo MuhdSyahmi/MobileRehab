@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -72,7 +71,7 @@ public class ViewPatientDetails extends AppCompatActivity implements ViewPastApp
 
     private void getPastAppointmentData() {
         final String user_id = textView_userId.getText().toString();
-        final String pastAppointmentUrl = "http://192.168.1.23/MobileRehab/appointment.php?selectFn=viewpastappointment&user_id=" + user_id;
+        final String pastAppointmentUrl = "http://192.168.43.166/MobileRehab/appointment.php?selectFn=viewpastappointment&user_id=" + user_id;
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Retrieving Data, Please Wait");
         progressDialog.show();
@@ -80,7 +79,6 @@ public class ViewPatientDetails extends AppCompatActivity implements ViewPastApp
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(pastAppointmentUrl, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                Toast.makeText(getApplicationContext(), "Connection Error" + response.length(), Toast.LENGTH_SHORT).show();
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject jsonObject = response.getJSONObject(i);

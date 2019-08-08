@@ -25,7 +25,7 @@ import java.util.Map;
 
 public class AddPatient extends AppCompatActivity {
 
-    final String addpatientUrl = "http://192.168.1.23/MobileRehab/addpatient.php";
+    final String addpatientUrl = "http://192.168.43.166/MobileRehab/addpatient.php";
     Button button_signup;
     Vibrator v;
     EditText editText_patientemail, editText_patientpassword, editText_patientconfirmpassword;

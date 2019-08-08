@@ -23,7 +23,8 @@
         android:layout_marginTop="70dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:gravity="center"
-        android:textSize="20sp" />
+        android:textColor="@color/colorButton"
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/textView_userid"
@@ -38,9 +39,12 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="600dp"
+        android:background="#000E0D0D"
         android:fontFamily="sans-serif-condensed-medium"
-        android:textSize="18sp"
-        android:gravity="center" />
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:textColor="@color/colorButton"
+        android:textSize="22sp" />
 
     <GridLayout
         android:layout_width="match_parent"
