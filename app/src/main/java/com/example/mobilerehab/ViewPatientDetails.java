@@ -71,7 +71,7 @@ public class ViewPatientDetails extends AppCompatActivity implements ViewPastApp
 
     private void getPastAppointmentData() {
         final String user_id = textView_userId.getText().toString();
-        final String pastAppointmentUrl = "http://192.168.43.166/MobileRehab/appointment.php?selectFn=viewpastappointment&user_id=" + user_id;
+        final String pastAppointmentUrl = "http://192.168.0.121/MobileRehab/appointment.php?selectFn=viewpastappointment&user_id=" + user_id;
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Retrieving Data, Please Wait");
         progressDialog.show();

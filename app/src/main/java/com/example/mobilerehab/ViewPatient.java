@@ -58,7 +58,7 @@ public class ViewPatient extends AppCompatActivity implements ViewPatientAdapter
     private void getPatientList() {
 
         final String user_id = textView_userid.getText().toString();
-        final String patientUrl = "http://192.168.43.166/MobileRehab/viewpatient.php?user_id=" + user_id;
+        final String patientUrl = "http://192.168.0.121/MobileRehab/viewpatient.php?user_id=" + user_id;
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Retrieving Data, Please Wait");
         progressDialog.show();

@@ -29,16 +29,75 @@
             android:layout_marginTop="30dp"
             android:textColor="@color/colorPrimaryDark" />
 
+        <TextView
+            android:id="@+id/textView_fullname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView_updateprofile"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            android:text="Full Name: "
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView_identificationno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editText_patientname"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            android:text="Identification No: "
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editText_patienticnumber"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            android:text="Address: "
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView_phonenumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editText_patientaddress"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            android:text="Phone Number: "
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editText_patientphonenumber"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            android:text="Email: "
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView_dayscounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editText_patientemail"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            android:text="Days away from drugs: "
+            android:textSize="20sp" />
+
         <EditText
             android:id="@+id/editText_patientname"
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_below="@+id/textView_fullname"
             android:background="@drawable/roundedcorner"
-            android:layout_below="@+id/textView_updateprofile"
+            android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-condensed-medium"
-            android:hint="@string/full_name"
             android:paddingStart="10dp"
             android:paddingEnd="10dp" />
 
@@ -47,11 +106,10 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_below="@id/textView_identificationno"
             android:background="@drawable/roundedcorner"
-            android:layout_below="@id/editText_patientname"
+            android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-condensed-medium"
-            android:hint="@string/identification_number"
             android:paddingStart="10dp"
             android:paddingEnd="10dp" />
 
@@ -60,11 +118,10 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_below="@+id/textView_address"
             android:background="@drawable/roundedcorner"
-            android:layout_below="@+id/editText_patienticnumber"
+            android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-condensed-medium"
-            android:hint="@string/address"
             android:paddingStart="10dp"
             android:paddingEnd="10dp" />
 
@@ -73,11 +130,10 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_below="@+id/textView_phonenumber"
             android:background="@drawable/roundedcorner"
-            android:layout_below="@+id/editText_patientaddress"
+            android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-condensed-medium"
-            android:hint="@string/phone_number"
             android:paddingStart="10dp"
             android:paddingEnd="10dp" />
 
@@ -85,12 +141,11 @@
             android:id="@+id/editText_patientemail"
             android:layout_width="350dp"
             android:layout_height="50dp"
-            android:layout_below="@+id/editText_patientphonenumber"
+            android:layout_below="@+id/textView_email"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/roundedcorner"
             android:fontFamily="sans-serif-condensed-medium"
-            android:hint="@string/email_address"
             android:paddingStart="10dp"
             android:paddingEnd="10dp" />
 
@@ -99,10 +154,9 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_below="@id/textView_dayscounter"
             android:background="@drawable/roundedcorner"
-            android:layout_below="@id/editText_patientemail"
-            android:hint="@string/days_away_from_drugs"
+            android:layout_marginTop="10dp"
             android:clickable="true"
             android:inputType="date"
             android:datePickerMode="calendar"
